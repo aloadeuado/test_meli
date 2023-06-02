@@ -150,12 +150,12 @@
 		9563CDFC2A297F1200E5CC8E /* test_meli */ = {
 			isa = PBXGroup;
 			children = (
+				9563CE3D2A2996D500E5CC8E /* Resources */,
 				9563CE2D2A29917A00E5CC8E /* Config */,
 				9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */,
 				9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */,
 				9563CE012A297F1200E5CC8E /* ViewController.swift */,
 				9563CE032A297F1200E5CC8E /* Main.storyboard */,
-				9563CE062A297F1400E5CC8E /* Assets.xcassets */,
 				9563CE082A297F1400E5CC8E /* LaunchScreen.storyboard */,
 				9563CE0B2A297F1400E5CC8E /* Info.plist */,
 			);
@@ -187,6 +187,14 @@
 				9563CE302A29937F00E5CC8E /* prd.xcconfig */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		9563CE3D2A2996D500E5CC8E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE062A297F1400E5CC8E /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CE3C028D51664C756C46E078 /* Frameworks */ = {
@@ -796,7 +804,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli";
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -926,7 +934,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli";
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli-qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1050,7 +1058,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli";
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli-qa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
