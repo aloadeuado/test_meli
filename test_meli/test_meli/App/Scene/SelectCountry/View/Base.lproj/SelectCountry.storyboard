@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-674" y="5"/>
         </scene>
-        <!--Select Country View Controller-->
+        <!--Selected Contry View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SelectCountryViewController" customModule="test_meli" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SelectedContryViewController" customModule="test_meli" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,9 +46,6 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="114"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="contentViewShimmer" destination="ags-wP-NQt" id="7IQ-bV-gQC"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <sections/>
@@ -107,6 +104,9 @@
                                                 <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="continuePressedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdR-UK-23Z"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -141,6 +141,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yIk-Bd-gdz"/>
+                    <connections>
+                        <outlet property="continueButton" destination="Q1l-P4-OHR" id="Iq9-lR-lxe"/>
+                        <outlet property="noDataView" destination="5Ni-Vp-H8j" id="uRY-zn-90J"/>
+                        <outlet property="sitesTableView" destination="vVb-KK-MIR" id="VZ2-Uq-pS0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

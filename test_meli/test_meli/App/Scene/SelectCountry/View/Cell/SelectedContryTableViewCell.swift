@@ -18,7 +18,6 @@ class SelectedContryTableViewCell: UITableViewCell {
     @IBOutlet weak var contentViewShimmer: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var region: UILabel!
-    @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var flagWebView: WKWebView!
     @IBOutlet weak var stateSwicth: UISwitch!
     

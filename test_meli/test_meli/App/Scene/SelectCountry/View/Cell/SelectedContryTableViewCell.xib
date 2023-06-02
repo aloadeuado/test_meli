@@ -83,6 +83,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="contentViewShimmer" destination="Yek-25-3xu" id="1Vy-04-5NL"/>
                 <outlet property="flagWebView" destination="GlV-9E-rIp" id="mcw-5E-3Ep"/>
                 <outlet property="region" destination="D9K-dF-Iu1" id="tum-gq-17P"/>
                 <outlet property="stateSwicth" destination="duh-pb-5Qa" id="lrn-sd-EYn"/>
