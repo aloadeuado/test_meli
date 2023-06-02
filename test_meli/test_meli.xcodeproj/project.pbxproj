@@ -40,11 +40,17 @@
 
 /* Begin PBXFileReference section */
 		061F48ACDEC6F7A25929C9A2 /* Pods-test_meli.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.release.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.release.xcconfig"; sourceTree = "<group>"; };
+		0A1218C3EA11595C8F7D1A7F /* Pods-test_meliTests.release_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.release_qa.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.release_qa.xcconfig"; sourceTree = "<group>"; };
+		1BB0044036A3E21B9B40D7D2 /* Pods-test_meliTests.debug_dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.debug_dev.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.debug_dev.xcconfig"; sourceTree = "<group>"; };
 		1FA673C2236164D24A6D2C70 /* Pods_test_meli_test_meliUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_meli_test_meliUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BAA85DB3F6FB8885858087D /* Pods-test_meliTests.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.debug_qa.xcconfig"; sourceTree = "<group>"; };
 		5403271D7EB105993BF0E325 /* Pods_test_meliTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_meliTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B83561FF0E8FA6D8152E203 /* Pods-test_meli.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug.xcconfig"; sourceTree = "<group>"; };
+		5E6BB2442F7BF3D6FC415E36 /* Pods-test_meli-test_meliUITests.release_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.release_qa.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.release_qa.xcconfig"; sourceTree = "<group>"; };
+		6B684FA39251BF25A4F9E3E2 /* Pods-test_meli-test_meliUITests.debug_dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug_dev.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug_dev.xcconfig"; sourceTree = "<group>"; };
 		73A669030F67477350268C76 /* Pods_test_meli.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_meli.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7910D472F53A3F0CBFE41042 /* Pods-test_meli-test_meliUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A27451A3726897F72EB80B7 /* Pods-test_meli.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug_qa.xcconfig"; sourceTree = "<group>"; };
 		9563CDFA2A297F1200E5CC8E /* test_meli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_meli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,9 +64,15 @@
 		9563CE1A2A297F1400E5CC8E /* test_meliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = test_meliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9563CE1E2A297F1400E5CC8E /* test_meliUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_meliUITests.swift; sourceTree = "<group>"; };
 		9563CE202A297F1400E5CC8E /* test_meliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_meliUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9563CE2E2A29936600E5CC8E /* dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = dev.xcconfig; sourceTree = "<group>"; };
+		9563CE2F2A29937000E5CC8E /* qa.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = qa.xcconfig; sourceTree = "<group>"; };
+		9563CE302A29937F00E5CC8E /* prd.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = prd.xcconfig; sourceTree = "<group>"; };
 		9E9407F78901FCFEF908831E /* Pods-test_meliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.debug.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0959F0BEAE27E4A4DE51E4E /* Pods-test_meli.debug_dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug_dev.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug_dev.xcconfig"; sourceTree = "<group>"; };
+		CBFA3AEEF357B8D67782F2DA /* Pods-test_meli-test_meliUITests.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; sourceTree = "<group>"; };
 		CC29E4E5ECCD519D0CA20BFD /* Pods-test_meliTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.release.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.release.xcconfig"; sourceTree = "<group>"; };
 		E124415A7C2B1110446561D3 /* Pods-test_meli-test_meliUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.release.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FDBBE2B8C1FD4647B0345AD7 /* Pods-test_meli.release_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.release_qa.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.release_qa.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +112,16 @@
 				E124415A7C2B1110446561D3 /* Pods-test_meli-test_meliUITests.release.xcconfig */,
 				9E9407F78901FCFEF908831E /* Pods-test_meliTests.debug.xcconfig */,
 				CC29E4E5ECCD519D0CA20BFD /* Pods-test_meliTests.release.xcconfig */,
+				8A27451A3726897F72EB80B7 /* Pods-test_meli.debug_qa.xcconfig */,
+				A0959F0BEAE27E4A4DE51E4E /* Pods-test_meli.debug_dev.xcconfig */,
+				FDBBE2B8C1FD4647B0345AD7 /* Pods-test_meli.release_qa.xcconfig */,
+				CBFA3AEEF357B8D67782F2DA /* Pods-test_meli-test_meliUITests.debug_qa.xcconfig */,
+				6B684FA39251BF25A4F9E3E2 /* Pods-test_meli-test_meliUITests.debug_dev.xcconfig */,
+				5E6BB2442F7BF3D6FC415E36 /* Pods-test_meli-test_meliUITests.release_qa.xcconfig */,
+				4BAA85DB3F6FB8885858087D /* Pods-test_meliTests.debug_qa.xcconfig */,
+				1BB0044036A3E21B9B40D7D2 /* Pods-test_meliTests.debug_dev.xcconfig */,
+				0A1218C3EA11595C8F7D1A7F /* Pods-test_meliTests.release_qa.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -130,11 +150,12 @@
 		9563CDFC2A297F1200E5CC8E /* test_meli */ = {
 			isa = PBXGroup;
 			children = (
+				9563CE3D2A2996D500E5CC8E /* Resources */,
+				9563CE2D2A29917A00E5CC8E /* Config */,
 				9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */,
 				9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */,
 				9563CE012A297F1200E5CC8E /* ViewController.swift */,
 				9563CE032A297F1200E5CC8E /* Main.storyboard */,
-				9563CE062A297F1400E5CC8E /* Assets.xcassets */,
 				9563CE082A297F1400E5CC8E /* LaunchScreen.storyboard */,
 				9563CE0B2A297F1400E5CC8E /* Info.plist */,
 			);
@@ -156,6 +177,24 @@
 				9563CE202A297F1400E5CC8E /* test_meliUITestsLaunchTests.swift */,
 			);
 			path = test_meliUITests;
+			sourceTree = "<group>";
+		};
+		9563CE2D2A29917A00E5CC8E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE2E2A29936600E5CC8E /* dev.xcconfig */,
+				9563CE2F2A29937000E5CC8E /* qa.xcconfig */,
+				9563CE302A29937F00E5CC8E /* prd.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		9563CE3D2A2996D500E5CC8E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE062A297F1400E5CC8E /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CE3C028D51664C756C46E078 /* Frameworks */ = {
@@ -431,6 +470,7 @@
 /* Begin XCBuildConfiguration section */
 		9563CE222A297F1400E5CC8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9563CE302A29937F00E5CC8E /* prd.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -491,6 +531,7 @@
 		};
 		9563CE232A297F1400E5CC8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9563CE302A29937F00E5CC8E /* prd.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -557,8 +598,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -586,8 +627,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,6 +722,390 @@
 			};
 			name = Release;
 		};
+		9563CE312A29941100E5CC8E /* Debug_dev */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9563CE2E2A29936600E5CC8E /* dev.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug_dev;
+		};
+		9563CE322A29941100E5CC8E /* Debug_dev */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0959F0BEAE27E4A4DE51E4E /* Pods-test_meli.debug_dev.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = test_meli/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli-dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug_dev;
+		};
+		9563CE332A29941100E5CC8E /* Debug_dev */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BB0044036A3E21B9B40D7D2 /* Pods-test_meliTests.debug_dev.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meliTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/test_meli.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/test_meli";
+			};
+			name = Debug_dev;
+		};
+		9563CE342A29941100E5CC8E /* Debug_dev */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B684FA39251BF25A4F9E3E2 /* Pods-test_meli-test_meliUITests.debug_dev.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meliUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = test_meli;
+			};
+			name = Debug_dev;
+		};
+		9563CE352A29941B00E5CC8E /* Debug_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9563CE2F2A29937000E5CC8E /* qa.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug_qa;
+		};
+		9563CE362A29941B00E5CC8E /* Debug_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A27451A3726897F72EB80B7 /* Pods-test_meli.debug_qa.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = test_meli/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli-qa";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug_qa;
+		};
+		9563CE372A29941B00E5CC8E /* Debug_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BAA85DB3F6FB8885858087D /* Pods-test_meliTests.debug_qa.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meliTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/test_meli.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/test_meli";
+			};
+			name = Debug_qa;
+		};
+		9563CE382A29941B00E5CC8E /* Debug_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBFA3AEEF357B8D67782F2DA /* Pods-test_meli-test_meliUITests.debug_qa.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meliUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = test_meli;
+			};
+			name = Debug_qa;
+		};
+		9563CE392A29942500E5CC8E /* Release_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9563CE2F2A29937000E5CC8E /* qa.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release_qa;
+		};
+		9563CE3A2A29942500E5CC8E /* Release_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDBBE2B8C1FD4647B0345AD7 /* Pods-test_meli.release_qa.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = test_meli/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meli-qa";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release_qa;
+		};
+		9563CE3B2A29942500E5CC8E /* Release_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A1218C3EA11595C8F7D1A7F /* Pods-test_meliTests.release_qa.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meliTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/test_meli.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/test_meli";
+			};
+			name = Release_qa;
+		};
+		9563CE3C2A29942500E5CC8E /* Release_qa */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E6BB2442F7BF3D6FC415E36 /* Pods-test_meli-test_meliUITests.release_qa.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KV7J43P59;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "meli.com.test-meliUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = test_meli;
+			};
+			name = Release_qa;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -688,7 +1113,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9563CE222A297F1400E5CC8E /* Debug */,
+				9563CE352A29941B00E5CC8E /* Debug_qa */,
+				9563CE312A29941100E5CC8E /* Debug_dev */,
 				9563CE232A297F1400E5CC8E /* Release */,
+				9563CE392A29942500E5CC8E /* Release_qa */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -697,7 +1125,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9563CE252A297F1400E5CC8E /* Debug */,
+				9563CE362A29941B00E5CC8E /* Debug_qa */,
+				9563CE322A29941100E5CC8E /* Debug_dev */,
 				9563CE262A297F1400E5CC8E /* Release */,
+				9563CE3A2A29942500E5CC8E /* Release_qa */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -706,7 +1137,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9563CE282A297F1400E5CC8E /* Debug */,
+				9563CE372A29941B00E5CC8E /* Debug_qa */,
+				9563CE332A29941100E5CC8E /* Debug_dev */,
 				9563CE292A297F1400E5CC8E /* Release */,
+				9563CE3B2A29942500E5CC8E /* Release_qa */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -715,7 +1149,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9563CE2B2A297F1400E5CC8E /* Debug */,
+				9563CE382A29941B00E5CC8E /* Debug_qa */,
+				9563CE342A29941100E5CC8E /* Debug_dev */,
 				9563CE2C2A297F1400E5CC8E /* Release */,
+				9563CE3C2A29942500E5CC8E /* Release_qa */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
