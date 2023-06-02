@@ -11,13 +11,28 @@
 		40F20FFD14CBB1CCFA88DCCD /* Pods_test_meliTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5403271D7EB105993BF0E325 /* Pods_test_meliTests.framework */; };
 		9563CDFE2A297F1200E5CC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */; };
 		9563CE002A297F1200E5CC8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */; };
-		9563CE022A297F1200E5CC8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE012A297F1200E5CC8E /* ViewController.swift */; };
-		9563CE052A297F1200E5CC8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9563CE032A297F1200E5CC8E /* Main.storyboard */; };
+		9563CE022A297F1200E5CC8E /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE012A297F1200E5CC8E /* SelectCountryViewController.swift */; };
+		9563CE052A297F1200E5CC8E /* SelectCountry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9563CE032A297F1200E5CC8E /* SelectCountry.storyboard */; };
 		9563CE072A297F1400E5CC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9563CE062A297F1400E5CC8E /* Assets.xcassets */; };
 		9563CE0A2A297F1400E5CC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9563CE082A297F1400E5CC8E /* LaunchScreen.storyboard */; };
 		9563CE152A297F1400E5CC8E /* test_meliTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE142A297F1400E5CC8E /* test_meliTests.swift */; };
 		9563CE1F2A297F1400E5CC8E /* test_meliUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE1E2A297F1400E5CC8E /* test_meliUITests.swift */; };
 		9563CE212A297F1400E5CC8E /* test_meliUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE202A297F1400E5CC8E /* test_meliUITestsLaunchTests.swift */; };
+		9563CE422A299CD100E5CC8E /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE412A299CD100E5CC8E /* ApiServices.swift */; };
+		9563CE442A299D2100E5CC8E /* RouteURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE432A299D2100E5CC8E /* RouteURL.swift */; };
+		9563CE472A299DD100E5CC8E /* CountryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE462A299DD100E5CC8E /* CountryData.swift */; };
+		9563CE4F2A29A53F00E5CC8E /* SelectedContryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE4D2A29A53F00E5CC8E /* SelectedContryTableViewCell.swift */; };
+		9563CE502A29A53F00E5CC8E /* SelectedContryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9563CE4E2A29A53F00E5CC8E /* SelectedContryTableViewCell.xib */; };
+		959B98162A29B6CD00CA313B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 959B98182A29B6CD00CA313B /* Localizable.strings */; };
+		959B981B2A29BB3200CA313B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B981A2A29BB3200CA313B /* String+Extension.swift */; };
+		959B981E2A29BD3B00CA313B /* CustomEnabledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B981D2A29BD3B00CA313B /* CustomEnabledButton.swift */; };
+		959B98202A29BD6300CA313B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B981F2A29BD6300CA313B /* CustomButton.swift */; };
+		959B98222A29BDD700CA313B /* SelectedContryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B98212A29BDD700CA313B /* SelectedContryViewModel.swift */; };
+		959B98252A29BE5A00CA313B /* ContryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B98242A29BE5A00CA313B /* ContryRepository.swift */; };
+		959B982A2A29C50E00CA313B /* AlerMessageThreeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B98282A29C50E00CA313B /* AlerMessageThreeOptionsViewController.swift */; };
+		959B982D2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959B982C2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib */; };
+		959B982F2A29C71E00CA313B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B982E2A29C71E00CA313B /* CustomView.swift */; };
+		959B98312A29C8A100CA313B /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B98302A29C8A100CA313B /* UserDefault.swift */; };
 		B404DB8579FCB786805860CF /* Pods_test_meli.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A669030F67477350268C76 /* Pods_test_meli.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +69,8 @@
 		9563CDFA2A297F1200E5CC8E /* test_meli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_meli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9563CE012A297F1200E5CC8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9563CE042A297F1200E5CC8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9563CE012A297F1200E5CC8E /* SelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewController.swift; sourceTree = "<group>"; };
+		9563CE042A297F1200E5CC8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SelectCountry.storyboard; sourceTree = "<group>"; };
 		9563CE062A297F1400E5CC8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9563CE092A297F1400E5CC8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9563CE0B2A297F1400E5CC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +82,21 @@
 		9563CE2E2A29936600E5CC8E /* dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = dev.xcconfig; sourceTree = "<group>"; };
 		9563CE2F2A29937000E5CC8E /* qa.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = qa.xcconfig; sourceTree = "<group>"; };
 		9563CE302A29937F00E5CC8E /* prd.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = prd.xcconfig; sourceTree = "<group>"; };
+		9563CE412A299CD100E5CC8E /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
+		9563CE432A299D2100E5CC8E /* RouteURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteURL.swift; sourceTree = "<group>"; };
+		9563CE462A299DD100E5CC8E /* CountryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryData.swift; sourceTree = "<group>"; };
+		9563CE4D2A29A53F00E5CC8E /* SelectedContryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedContryTableViewCell.swift; sourceTree = "<group>"; };
+		9563CE4E2A29A53F00E5CC8E /* SelectedContryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedContryTableViewCell.xib; sourceTree = "<group>"; };
+		959B98172A29B6CD00CA313B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		959B981A2A29BB3200CA313B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		959B981D2A29BD3B00CA313B /* CustomEnabledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnabledButton.swift; sourceTree = "<group>"; };
+		959B981F2A29BD6300CA313B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		959B98212A29BDD700CA313B /* SelectedContryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedContryViewModel.swift; sourceTree = "<group>"; };
+		959B98242A29BE5A00CA313B /* ContryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContryRepository.swift; sourceTree = "<group>"; };
+		959B98282A29C50E00CA313B /* AlerMessageThreeOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerMessageThreeOptionsViewController.swift; sourceTree = "<group>"; };
+		959B982C2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlerMessageThreeOptionsViewController.xib; sourceTree = "<group>"; };
+		959B982E2A29C71E00CA313B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		959B98302A29C8A100CA313B /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		9E9407F78901FCFEF908831E /* Pods-test_meliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.debug.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0959F0BEAE27E4A4DE51E4E /* Pods-test_meli.debug_dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug_dev.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug_dev.xcconfig"; sourceTree = "<group>"; };
 		CBFA3AEEF357B8D67782F2DA /* Pods-test_meli-test_meliUITests.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; sourceTree = "<group>"; };
@@ -150,12 +180,11 @@
 		9563CDFC2A297F1200E5CC8E /* test_meli */ = {
 			isa = PBXGroup;
 			children = (
+				9563CE3E2A299C7000E5CC8E /* App */,
 				9563CE3D2A2996D500E5CC8E /* Resources */,
 				9563CE2D2A29917A00E5CC8E /* Config */,
 				9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */,
 				9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */,
-				9563CE012A297F1200E5CC8E /* ViewController.swift */,
-				9563CE032A297F1200E5CC8E /* Main.storyboard */,
 				9563CE082A297F1400E5CC8E /* LaunchScreen.storyboard */,
 				9563CE0B2A297F1400E5CC8E /* Info.plist */,
 			);
@@ -192,9 +221,145 @@
 		9563CE3D2A2996D500E5CC8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				959B98132A29B6B200CA313B /* String */,
 				9563CE062A297F1400E5CC8E /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9563CE3E2A299C7000E5CC8E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE482A299E6000E5CC8E /* Scene */,
+				959B98232A29BE3C00CA313B /* Respository */,
+				9563CE452A299DC600E5CC8E /* Model */,
+				9563CE3F2A299C7700E5CC8E /* Helper */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9563CE3F2A299C7700E5CC8E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				959B98262A29C4E500CA313B /* Alert */,
+				959B981C2A29BD2B00CA313B /* Component */,
+				959B98192A29BACC00CA313B /* Extensions */,
+				9563CE402A299C8B00E5CC8E /* Networking */,
+				959B98302A29C8A100CA313B /* UserDefault.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		9563CE402A299C8B00E5CC8E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE412A299CD100E5CC8E /* ApiServices.swift */,
+				9563CE432A299D2100E5CC8E /* RouteURL.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9563CE452A299DC600E5CC8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE462A299DD100E5CC8E /* CountryData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9563CE482A299E6000E5CC8E /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE492A299E7400E5CC8E /* SelectCountry */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9563CE492A299E7400E5CC8E /* SelectCountry */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE4B2A299E8900E5CC8E /* ViewModel */,
+				9563CE4A2A299E8300E5CC8E /* View */,
+			);
+			path = SelectCountry;
+			sourceTree = "<group>";
+		};
+		9563CE4A2A299E8300E5CC8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE4C2A29A46F00E5CC8E /* Cell */,
+				9563CE012A297F1200E5CC8E /* SelectCountryViewController.swift */,
+				9563CE032A297F1200E5CC8E /* SelectCountry.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9563CE4B2A299E8900E5CC8E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				959B98212A29BDD700CA313B /* SelectedContryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9563CE4C2A29A46F00E5CC8E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9563CE4D2A29A53F00E5CC8E /* SelectedContryTableViewCell.swift */,
+				9563CE4E2A29A53F00E5CC8E /* SelectedContryTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		959B98132A29B6B200CA313B /* String */ = {
+			isa = PBXGroup;
+			children = (
+				959B98182A29B6CD00CA313B /* Localizable.strings */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		959B98192A29BACC00CA313B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				959B981A2A29BB3200CA313B /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		959B981C2A29BD2B00CA313B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				959B982E2A29C71E00CA313B /* CustomView.swift */,
+				959B981D2A29BD3B00CA313B /* CustomEnabledButton.swift */,
+				959B981F2A29BD6300CA313B /* CustomButton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		959B98232A29BE3C00CA313B /* Respository */ = {
+			isa = PBXGroup;
+			children = (
+				959B98242A29BE5A00CA313B /* ContryRepository.swift */,
+			);
+			path = Respository;
+			sourceTree = "<group>";
+		};
+		959B98262A29C4E500CA313B /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				959B98272A29C4F400CA313B /* AlerMessageThreeOptions */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		959B98272A29C4F400CA313B /* AlerMessageThreeOptions */ = {
+			isa = PBXGroup;
+			children = (
+				959B98282A29C50E00CA313B /* AlerMessageThreeOptionsViewController.swift */,
+				959B982C2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib */,
+			);
+			path = AlerMessageThreeOptions;
 			sourceTree = "<group>";
 		};
 		CE3C028D51664C756C46E078 /* Frameworks */ = {
@@ -218,6 +383,7 @@
 				9563CDF62A297F1200E5CC8E /* Sources */,
 				9563CDF72A297F1200E5CC8E /* Frameworks */,
 				9563CDF82A297F1200E5CC8E /* Resources */,
+				0D85BB43B59B33605E3E251E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,6 +421,7 @@
 				9563CE162A297F1400E5CC8E /* Sources */,
 				9563CE172A297F1400E5CC8E /* Frameworks */,
 				9563CE182A297F1400E5CC8E /* Resources */,
+				E4843AD5F87A885FA3F6E77E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,9 +481,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959B98162A29B6CD00CA313B /* Localizable.strings in Resources */,
 				9563CE0A2A297F1400E5CC8E /* LaunchScreen.storyboard in Resources */,
+				959B982D2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib in Resources */,
 				9563CE072A297F1400E5CC8E /* Assets.xcassets in Resources */,
-				9563CE052A297F1200E5CC8E /* Main.storyboard in Resources */,
+				9563CE052A297F1200E5CC8E /* SelectCountry.storyboard in Resources */,
+				9563CE502A29A53F00E5CC8E /* SelectedContryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +507,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0D85BB43B59B33605E3E251E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-test_meli/Pods-test_meli-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-test_meli/Pods-test_meli-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-test_meli/Pods-test_meli-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		86979553270091C8388BF2B4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +568,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E4843AD5F87A885FA3F6E77E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EB49499B73B332A64DE0888A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,8 +614,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9563CE022A297F1200E5CC8E /* ViewController.swift in Sources */,
+				959B981B2A29BB3200CA313B /* String+Extension.swift in Sources */,
+				9563CE442A299D2100E5CC8E /* RouteURL.swift in Sources */,
+				959B98312A29C8A100CA313B /* UserDefault.swift in Sources */,
+				959B981E2A29BD3B00CA313B /* CustomEnabledButton.swift in Sources */,
+				959B982F2A29C71E00CA313B /* CustomView.swift in Sources */,
+				9563CE4F2A29A53F00E5CC8E /* SelectedContryTableViewCell.swift in Sources */,
+				959B982A2A29C50E00CA313B /* AlerMessageThreeOptionsViewController.swift in Sources */,
+				959B98252A29BE5A00CA313B /* ContryRepository.swift in Sources */,
+				959B98202A29BD6300CA313B /* CustomButton.swift in Sources */,
+				9563CE022A297F1200E5CC8E /* SelectCountryViewController.swift in Sources */,
 				9563CDFE2A297F1200E5CC8E /* AppDelegate.swift in Sources */,
+				959B98222A29BDD700CA313B /* SelectedContryViewModel.swift in Sources */,
+				9563CE422A299CD100E5CC8E /* ApiServices.swift in Sources */,
+				9563CE472A299DD100E5CC8E /* CountryData.swift in Sources */,
 				9563CE002A297F1200E5CC8E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,12 +665,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9563CE032A297F1200E5CC8E /* Main.storyboard */ = {
+		9563CE032A297F1200E5CC8E /* SelectCountry.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9563CE042A297F1200E5CC8E /* Base */,
 			);
-			name = Main.storyboard;
+			name = SelectCountry.storyboard;
 			sourceTree = "<group>";
 		};
 		9563CE082A297F1400E5CC8E /* LaunchScreen.storyboard */ = {
@@ -463,6 +679,14 @@
 				9563CE092A297F1400E5CC8E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		959B98182A29B6CD00CA313B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				959B98172A29B6CD00CA313B /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -597,7 +821,7 @@
 				INFOPLIST_FILE = test_meli/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SelectCountry;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,7 +850,7 @@
 				INFOPLIST_FILE = test_meli/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SelectCountry;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -796,7 +1020,7 @@
 				INFOPLIST_FILE = test_meli/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SelectCountry;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -926,7 +1150,7 @@
 				INFOPLIST_FILE = test_meli/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SelectCountry;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1050,7 +1274,7 @@
 				INFOPLIST_FILE = test_meli/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = SelectCountry;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
