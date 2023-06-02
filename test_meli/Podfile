@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'test_meli' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for test_meli
+
+  target 'test_meliTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'test_meliUITests' do
+    # Pods for testing
+  end
+
+end
