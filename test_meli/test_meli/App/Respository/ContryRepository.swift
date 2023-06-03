@@ -7,11 +7,24 @@
 
 import Foundation
 
-class ContryRepository {
+struct ContryRepository {
     static func getCountries(complete: @escaping ((Bool, [CountryData]?, String?) -> Void )) {
         let url = getCountriesRoute()
         
         ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: [CountryData].self) { success, countryData, err in
+            DispatchQueue.main.async {
+                if success {
+                    complete(true, countryData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
+            }
+        }
+    }
+    
+    static func getDetailCountries(complete: @escaping ((Bool, [CountryFlagData]?, String?) -> Void )) {
+        let url = getDetailCountriesRoute()
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: [CountryFlagData].self) { success, countryData, err in
             DispatchQueue.main.async {
                 if success {
                     complete(true, countryData, nil)

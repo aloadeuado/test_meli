@@ -8,6 +8,7 @@
 import Foundation
 class SelectedContryViewModel{
     var selectedContryDelegate: SelectedContryDelegate?
+    var listCountryDetailData = [CountryFlagData]()
     
     init(selectedContryDelegate: SelectedContryDelegate?){
         self.selectedContryDelegate = selectedContryDelegate
@@ -29,7 +30,37 @@ class SelectedContryViewModel{
             self.selectedContryDelegate?.selectedContry(onError: err ?? "")
         }
     }
+    
+    func getCountriesDetail() {
+        ContryRepository.getDetailCountries { [weak self] success, listCountryFlagData, err in
+            guard let self = self else {return}
+            if success {
+                if (listCountryFlagData ?? []).isEmpty {
+                    self.selectedContryDelegate?.selectedContry(onNoData: "No data".localized)
+                    return
+                }
+                if let listCountryFlagData = listCountryFlagData {
+                    self.listCountryDetailData = listCountryFlagData
+                    self.getCountries()
+                    return
+                }
+            }
+            self.selectedContryDelegate?.selectedContry(onError: err ?? "")
+        }
+    }
 
+    func getFlagPngForCode(code: String) -> String {
+        return self.listCountryDetailData.first { countryFlagData in
+            return (countryFlagData.cca2 ?? "") == code
+        }?.flags?.png ?? ""
+    }
+    
+    func getRegionForCode(code: String) -> String {
+        return self.listCountryDetailData.first { countryFlagData in
+            return (countryFlagData.cca2 ?? "") == code
+        }?.region ?? ""
+    }
+    
     func setInternalSite(countryData: CountryData) {
         ContryRepository.setInternalSite(countryData: countryData)
     }

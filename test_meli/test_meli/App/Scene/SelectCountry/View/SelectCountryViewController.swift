@@ -31,7 +31,7 @@ class SelectedContryViewController: UIViewController {
         noDataView.isHidden = true
         selectedContryViewModel = SelectedContryViewModel(selectedContryDelegate: self)
         isLoadingSites = true
-        selectedContryViewModel?.getCountries()
+        selectedContryViewModel?.getCountriesDetail()
         setStateButton()
         
     }
@@ -113,7 +113,7 @@ extension SelectedContryViewController: UITableViewDataSource {
         } else {
             
             cell.stopSpinner()
-            cell.setData(countryData: listCountryData[indexPath.row], indexPath: indexPath)
+            cell.setData(countryData: listCountryData[indexPath.row], region: selectedContryViewModel?.getRegionForCode(code: listCountryData[indexPath.row].id ?? "") ?? "", flagUrl: selectedContryViewModel?.getFlagPngForCode(code: listCountryData[indexPath.row].id ?? "") ?? "", indexPath: indexPath)
         }
         return cell
     }

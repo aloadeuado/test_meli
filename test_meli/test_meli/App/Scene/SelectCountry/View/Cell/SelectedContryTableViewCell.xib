@@ -20,17 +20,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yek-25-3xu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GlV-9E-rIp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TKG-FB-RtI">
                                 <rect key="frame" x="10" y="10" width="95" height="95"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="GlV-9E-rIp" secondAttribute="height" multiplier="1:1" id="6e4-OD-fQ1"/>
+                                    <constraint firstAttribute="width" secondItem="TKG-FB-RtI" secondAttribute="height" multiplier="1:1" id="NOh-aO-ueA"/>
                                 </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuH-CX-gdw">
                                 <rect key="frame" x="110" y="10" width="136" height="21"/>
                                 <constraints>
@@ -60,16 +55,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="duh-pb-5Qa" secondAttribute="trailing" constant="10" id="6Yn-bL-ISa"/>
+                            <constraint firstItem="RuH-CX-gdw" firstAttribute="top" secondItem="TKG-FB-RtI" secondAttribute="top" id="Dqy-Gh-pOp"/>
                             <constraint firstItem="duh-pb-5Qa" firstAttribute="leading" secondItem="RuH-CX-gdw" secondAttribute="trailing" constant="15" id="DrI-gK-ui0"/>
-                            <constraint firstAttribute="bottom" secondItem="GlV-9E-rIp" secondAttribute="bottom" constant="10" id="EeQ-D2-CLI"/>
                             <constraint firstAttribute="bottom" secondItem="D9K-dF-Iu1" secondAttribute="bottom" constant="10" id="G3A-0j-HQC"/>
-                            <constraint firstItem="GlV-9E-rIp" firstAttribute="top" secondItem="Yek-25-3xu" secondAttribute="top" constant="10" id="RA8-Oh-GEf"/>
+                            <constraint firstItem="RuH-CX-gdw" firstAttribute="leading" secondItem="TKG-FB-RtI" secondAttribute="trailing" constant="5" id="KLE-sP-ZAS"/>
+                            <constraint firstItem="TKG-FB-RtI" firstAttribute="top" secondItem="Yek-25-3xu" secondAttribute="top" constant="10" id="RaF-gn-zKW"/>
                             <constraint firstItem="D9K-dF-Iu1" firstAttribute="leading" secondItem="RuH-CX-gdw" secondAttribute="leading" id="X8N-mq-Rpd"/>
-                            <constraint firstItem="RuH-CX-gdw" firstAttribute="top" secondItem="GlV-9E-rIp" secondAttribute="top" id="YAr-61-VS2"/>
                             <constraint firstItem="D9K-dF-Iu1" firstAttribute="top" secondItem="RuH-CX-gdw" secondAttribute="bottom" constant="10" id="b7K-zH-Oy4"/>
-                            <constraint firstItem="RuH-CX-gdw" firstAttribute="leading" secondItem="GlV-9E-rIp" secondAttribute="trailing" constant="5" id="h7j-e7-NRn"/>
+                            <constraint firstItem="TKG-FB-RtI" firstAttribute="leading" secondItem="Yek-25-3xu" secondAttribute="leading" constant="10" id="c4R-th-oem"/>
+                            <constraint firstAttribute="bottom" secondItem="TKG-FB-RtI" secondAttribute="bottom" constant="10" id="hgY-bf-gl7"/>
                             <constraint firstItem="D9K-dF-Iu1" firstAttribute="trailing" secondItem="RuH-CX-gdw" secondAttribute="trailing" id="sO7-7j-Dnu"/>
-                            <constraint firstItem="GlV-9E-rIp" firstAttribute="leading" secondItem="Yek-25-3xu" secondAttribute="leading" constant="10" id="vIT-DZ-yMx"/>
                             <constraint firstItem="duh-pb-5Qa" firstAttribute="centerY" secondItem="Yek-25-3xu" secondAttribute="centerY" id="vcz-BM-doD"/>
                         </constraints>
                     </view>
@@ -84,8 +79,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="contentViewShimmer" destination="Yek-25-3xu" id="1Vy-04-5NL"/>
-                <outlet property="flagWebView" destination="GlV-9E-rIp" id="mcw-5E-3Ep"/>
-                <outlet property="region" destination="D9K-dF-Iu1" id="tum-gq-17P"/>
+                <outlet property="flagImageView" destination="TKG-FB-RtI" id="8gI-7e-0zs"/>
+                <outlet property="regionLabel" destination="D9K-dF-Iu1" id="tum-gq-17P"/>
                 <outlet property="stateSwicth" destination="duh-pb-5Qa" id="lrn-sd-EYn"/>
                 <outlet property="titleLabel" destination="RuH-CX-gdw" id="l05-Wp-pAM"/>
             </connections>

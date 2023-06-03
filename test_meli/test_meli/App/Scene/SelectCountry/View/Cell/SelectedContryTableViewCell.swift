@@ -17,20 +17,23 @@ class SelectedContryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentViewShimmer: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var region: UILabel!
-    @IBOutlet weak var flagWebView: WKWebView!
+    @IBOutlet weak var regionLabel: UILabel!
+    @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var stateSwicth: UISwitch!
     
     var delegate: SelectedContryTableViewCellDelegate?
     
     var countryData: CountryData?
     var indexPath = IndexPath(row: 0, section: 0)
-    func setData(countryData: CountryData, indexPath: IndexPath) {
+    func setData(countryData: CountryData, region: String, flagUrl: String, indexPath: IndexPath) {
         self.indexPath = indexPath
         self.countryData = countryData
         titleLabel.text = "Name: ".localized + (countryData.name ?? "")
         stateSwicth.isOn = countryData.state
-        
+        regionLabel.text = region
+        if let url = URL(string: flagUrl) {
+            flagImageView.sd_setImage(with: url)
+        }
     }
     
     func showSpinner() {

@@ -20,5 +20,9 @@ func getStringOfInfo(key:String) -> String{
 }
 
 func getCountriesRoute() -> String {
-    return getStringOfInfo(key: "API_BASE_URL") + "/classified_locations/countries"
+    return getStringOfInfo(key: "API_BASE_URL") + "classified_locations/countries"
+}
+
+func getDetailCountriesRoute() -> String {
+    return getStringOfInfo(key: "API_BASE_URL_DETAIL") + "v3.1/all"
 }
