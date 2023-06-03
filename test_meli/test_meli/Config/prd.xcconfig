@@ -8,4 +8,5 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 API_BASE_URL = https:/$()/api.mercadolibre.com/
+API_BASE_URL_DETAIL = https:/$()/restcountries.com/
 APP_NAME = TEST MELI
