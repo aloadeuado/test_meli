@@ -22,7 +22,7 @@ class ListProductsViewController: UIViewController {
     var listProductsViewModel: ListProductsViewModel?
     
     @IBOutlet weak var noDataView: UIView!
-    var siteModel = SiteModel()
+    var countryData = CountryData()
     var listCategoriesFilters = [FilterData]()
     var isLoadingProdcuts = false
     var isLoadingNewProducts = false

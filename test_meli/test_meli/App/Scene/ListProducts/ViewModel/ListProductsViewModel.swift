@@ -9,82 +9,78 @@ import Foundation
 class ListProductsViewModel{
     
     var listProductsViewModelDelegate: ListProductsViewModelDelegate?
-    
-    let categoryRepository = CatagoriesRepository()
-    let productRepository = ProductRepository()
-    let contryRepository = ContryRepository()
 
     init(listProductsViewModelDelegate: ListProductsViewModelDelegate) {
         self.listProductsViewModelDelegate = listProductsViewModelDelegate
     }
-    func setCatogoryProduct(nameCategory: String, categoryModel: CategoryModel,productModel:ProductModel) -> ProductModel {
-        guard let categoryFilterAvaible = productModel.availableFilters.first(where: { (availableFilter) -> Bool in
+    func setCatogoryProduct(nameCategory: String, categoryModel: CategoryData,productData:ProductData) -> ProductData {
+        guard let categoryFilterAvaible = productData.availableFilters?.first(where: { (availableFilter) -> Bool in
             return availableFilter.id == "category"
         }) else {
             let filterValue = FilterValue(id: categoryModel.id, name: categoryModel.name)
             let filterr = Filter(id: "category", name: "", type: "", values: [filterValue])
-            productModel.filters = [filterr]
-            return productModel
+            productData.filters = [filterr]
+            return productData
         }
         
-        guard let valueAvaible = categoryFilterAvaible.values.first(where: { (availableFilterValue) -> Bool in
+        guard let valueAvaible = categoryFilterAvaible.values?.first(where: { (availableFilterValue) -> Bool in
             availableFilterValue.name == nameCategory
         }) else {
             let filterValue = FilterValue(id: categoryModel.id, name: categoryModel.name)
             let filterr = Filter(id: "category", name: "", type: "", values: [filterValue])
-            productModel.filters = [filterr]
-            return productModel
+            productData.filters = [filterr]
+            return productData
         }
         
-        guard let categoryFilter = productModel.filters.first(where: { (filter) -> Bool in
+        guard let categoryFilter = productData.filters?.first(where: { (filter) -> Bool in
             return filter.id == "category"
-        }) else { return productModel }
-        categoryFilter.values = [FilterValue(id: valueAvaible.id, name: valueAvaible.name)]
-        productModel.filters = [categoryFilter]
+        }) else { return productData }
+        categoryFilter.values = [FilterValue(id: valueAvaible.id ?? "", name: valueAvaible.name ?? "")]
+        productData.filters = [categoryFilter]
         
-        return productModel
+        return productData
     }
     
-    func getListTextSortInternal(productModel:ProductModel) -> [String] {
+    func getListTextSortInternal(productData: ProductData) -> [String] {
         var listTextSort = [String] ()
-        listTextSort.append(productModel.sort.name)
-        productModel.availableSorts.forEach { (sort) in
-            listTextSort.append(sort.name)
+        listTextSort.append(productData.sort?.name ?? "")
+        productData.availableSorts?.forEach { (sort) in
+            listTextSort.append(sort.name ?? "")
         }
         
         return listTextSort
     }
     
-    func setInitOffsetAndLimit(numberOfItems: Int32, productModel:ProductModel) -> ProductModel {
-        productModel.paging.offset = 0
-        productModel.paging.limit = Int(numberOfItems)
+    func setInitOffsetAndLimit(numberOfItems: Int32, productData:ProductData) -> ProductData {
+        productData.paging?.offset = 0
+        productData.paging?.limit = Int(numberOfItems)
         
-        return productModel
+        return productData
     }
     
-    func setSortValue(nameSort: String, productModel: ProductModel) -> ProductModel {
-        guard let sordSend = productModel.availableSorts.first(where: { (sort) -> Bool in
+    func setSortValue(nameSort: String, productData: ProductData) -> ProductData {
+        guard let sordSend = productData.availableSorts?.first(where: { (sort) -> Bool in
             return sort.name == nameSort
         }) else {
-            return productModel
+            return productData
         }
         
-        productModel.sort = sordSend
+        productData.sort = sordSend
         
-        return productModel
+        return productData
     }
     
-    func getFiltersAvaible(productModel: ProductModel) -> [FilterData] {
+    func getFiltersAvaible(productData: ProductData) -> [FilterData] {
         var listFilter = [FilterData]()
-        productModel.availableFilters.forEach { (availableFilter) in
-            let idTitle = availableFilter.id
-            let nameTitle = availableFilter.name
+        productData.availableFilters?.forEach { (availableFilter) in
+            let idTitle = availableFilter.id ?? ""
+            let nameTitle = availableFilter.name ?? ""
             listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: "", nameValue: "", isTitle: true, state: false))
-            availableFilter.values.forEach { (availableFilterValue) in
-                let idValue = availableFilterValue.id
-                let nameValue = availableFilterValue.name
+            availableFilter.values?.forEach { (availableFilterValue) in
+                let idValue = availableFilterValue.id ?? ""
+                let nameValue = availableFilterValue.name ?? ""
                 var state = false
-                if let _ = productModel.filters.first(where: { (filter) -> Bool in
+                if let _ = productData.filters?.first(where: { (filter) -> Bool in
                     return filter.id == availableFilterValue.id
                 }) {
                     state = true
@@ -97,41 +93,41 @@ class ListProductsViewModel{
         return listFilter
     }
     
-    func setNewFilters(listFilterData: [FilterData], productModel: ProductModel) -> ProductModel {
+    func setNewFilters(listFilterData: [FilterData], productData: ProductData) -> ProductData {
         let listFilterData1 = listFilterData.filter { (filterData) -> Bool in
             filterData.state == true
         }
-        var filters = productModel.filters
-        let filtersAvailble = productModel.availableFilters
+        var filters = productData.filters ?? []
+        let filtersAvailble = productData.availableFilters ?? []
         filtersAvailble.forEach { (filter) in
             if let filterSelect = listFilterData1.first(where: { (filterData) -> Bool in
                 return filterData.idTitle == filter.id
             }) {
-                let filterSend = Filter(id: filterSelect.idTitle, name: filterSelect.nameTitle, type: "", values: [FilterValue]())
-                filter.values.forEach { (availableFilterValue) in
+                var filterSend = Filter(id: filterSelect.idTitle, name: filterSelect.nameTitle, type: "", values: [FilterValue]())
+                filter.values?.forEach { (availableFilterValue) in
                     if let filterValueSelect = listFilterData1.first(where: { (filterData) -> Bool in
                         return filterData.idValue == availableFilterValue.id
                     }) {
                         let filterValue = FilterValue(id: filterValueSelect.idValue, name: filterValueSelect.nameValue)
-                        filterSend.values.append(filterValue)
+                        filterSend.values?.append(filterValue)
                     }
                 }
-                if !filterSend.values.isEmpty {
+                if !(filterSend.values?.isEmpty ?? false) {
                     filters.append(filterSend)
                 }
             }
         }
         
-        productModel.filters = filters
+        productData.filters = filters
         
-        return productModel
+        return productData
         
     }
     
-    func addItems(numberOfItems: Int32, productModel: ProductModel) -> ProductModel {
-        var offset = productModel.paging.offset
-        if ((offset + Int(numberOfItems)) >= productModel.paging.total) {
-            offset = productModel.paging.offset
+    func addItems(numberOfItems: Int32, productData: ProductData) -> ProductData{
+        var offset = productData.paging?.offset ?? 0
+        if ((offset + Int(numberOfItems)) >= productData.paging?.total ?? 0) {
+            offset = productData.paging?.offset ?? 0
         } else {
             offset += Int(numberOfItems)
         }
@@ -139,21 +135,26 @@ class ListProductsViewModel{
 
         let limit = Int(numberOfItems)
         
-        productModel.paging.offset = offset
-        productModel.paging.limit = limit
+        productData.paging?.offset = offset
+        productData.paging?.limit = limit
         
-        return productModel
+        return productData
     }
     
-    func getCategoriesOfSites(siteId: String) {
-        categoryRepository.getCategoriesOfSites(siteId: siteId) { (categories) in
-            self.listProductsViewModelDelegate?.listProductsViewModel(succesGetCategories: categories)
-        } error: { (error) in
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: error)
+    func getCategoriesOfSites(countryId: String) {
+        CatagoriesRepository.getCategoriesOfSites(countryId: countryId) { success, listCategoryData, err in
+            if success {
+                if let listCategoryData = listCategoryData, listCategoryData.isEmpty {
+                    self.listProductsViewModelDelegate?.listProductsViewModel(succesGetCategories: listCategoryData)
+                    return
+                }
+            }
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
         }
     }
-    func getProducts(siteId: String, productModel: ProductModel){
-        productRepository.getProducts(siteId: siteId, productModel: productModel) { (product) in
+    
+    func getProducts(siteId: String, productData: ProductData){
+        productRepository.getProducts(siteId: siteId, productModel: ProductData) { (product) in
             self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: product)
         } error: { (error) in
             self.listProductsViewModelDelegate?.listProductsViewModel(onError: error)
@@ -186,8 +187,8 @@ class ListProductsViewModel{
     }
 }
 protocol ListProductsViewModelDelegate {
-    func listProductsViewModel(succesGetCategories categories: [CategoryModel])
-    func listProductsViewModel(succesGetSite siteModel: SiteModel)
+    func listProductsViewModel(succesGetCategories categories: [CategoryData])
+    func listProductsViewModel(succesGetSite siteModel: CountryData)
     func listProductsViewModel(onError error: String)
-    func listProductsViewModel(succesGetProduct products: ProductModel)
+    func listProductsViewModel(succesGetProduct products: ProductData)
 }

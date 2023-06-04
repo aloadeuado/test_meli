@@ -113,7 +113,7 @@ extension SelectedContryViewController: UITableViewDataSource {
         } else {
             
             cell.stopSpinner()
-            cell.setData(countryData: listCountryData[indexPath.row], region: selectedContryViewModel?.getRegionForCode(code: listCountryData[indexPath.row].id ?? "") ?? "", flagUrl: selectedContryViewModel?.getFlagPngForCode(code: listCountryData[indexPath.row].id ?? "") ?? "", indexPath: indexPath)
+            cell.setData(countryData: listCountryData[indexPath.row], region: selectedContryViewModel?.getRegionForCode(name: listCountryData[indexPath.row].name ?? "") ?? "", flagUrl: selectedContryViewModel?.getFlagPngForCode(name: listCountryData[indexPath.row].name ?? "") ?? "", indexPath: indexPath)
         }
         return cell
     }
