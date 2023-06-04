@@ -50,6 +50,7 @@
 		959B98592A2BE0FF00CA313B /* SelectOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B98572A2BE0FF00CA313B /* SelectOptionView.swift */; };
 		959B985B2A2BE12300CA313B /* ListProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B985A2A2BE12300CA313B /* ListProductsViewModel.swift */; };
 		959B985D2A2BE16100CA313B /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B985C2A2BE16100CA313B /* ProductRepository.swift */; };
+		959B985F2A2BE36100CA313B /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B985E2A2BE36100CA313B /* CategoryModel.swift */; };
 		B404DB8579FCB786805860CF /* Pods_test_meli.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A669030F67477350268C76 /* Pods_test_meli.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,7 @@
 		959B98572A2BE0FF00CA313B /* SelectOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionView.swift; sourceTree = "<group>"; };
 		959B985A2A2BE12300CA313B /* ListProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsViewModel.swift; sourceTree = "<group>"; };
 		959B985C2A2BE16100CA313B /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
+		959B985E2A2BE36100CA313B /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		9E9407F78901FCFEF908831E /* Pods-test_meliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.debug.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0959F0BEAE27E4A4DE51E4E /* Pods-test_meli.debug_dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug_dev.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug_dev.xcconfig"; sourceTree = "<group>"; };
 		CBFA3AEEF357B8D67782F2DA /* Pods-test_meli-test_meliUITests.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				9563CE462A299DD100E5CC8E /* CountryData.swift */,
 				959B98322A2ADACD00CA313B /* CountryFlagData.swift */,
+				959B985E2A2BE36100CA313B /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				959B98532A2BE09F00CA313B /* FiltersTableView.swift in Sources */,
 				959B985D2A2BE16100CA313B /* ProductRepository.swift in Sources */,
 				959B98252A29BE5A00CA313B /* ContryRepository.swift in Sources */,
+				959B985F2A2BE36100CA313B /* CategoryModel.swift in Sources */,
 				959B98332A2ADACD00CA313B /* CountryFlagData.swift in Sources */,
 				959B984C2A2BE08400CA313B /* DialogSelectMultiFilterViewController.swift in Sources */,
 				959B98202A29BD6300CA313B /* CustomButton.swift in Sources */,

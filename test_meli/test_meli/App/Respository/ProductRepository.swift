@@ -7,5 +7,7 @@
 
 import Foundation
 struct ProductRepository {
-    static func getCategoriesOfSites()
+    static func getCategoriesOfSites(countryCode: String, complete: @escaping ((Bool, [CountryData]?, String?) -> Void )) {
+        
+    }
 }
