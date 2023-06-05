@@ -286,7 +286,7 @@ extension ListProductsViewController: UICollectionViewDataSource {
 extension ListProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         result = products.results?[indexPath.row] ?? Result()
-        performSegue(withIdentifier: "showDetail", sender: nil)
+        DetailProductViewController.navigationShow(controller: self, result: result)
     }
 }
 //MARK: -UICollectionViewLayout

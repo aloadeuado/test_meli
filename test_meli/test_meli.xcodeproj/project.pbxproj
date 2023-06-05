@@ -60,6 +60,10 @@
 		95506B572A2D7DEB00326CED /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B552A2D7DEB00326CED /* ItemCollectionViewCell.swift */; };
 		95506B582A2D7DEB00326CED /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B562A2D7DEB00326CED /* ItemCollectionViewCell.xib */; };
 		95506B5A2A2D85F900326CED /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B592A2D85F900326CED /* Double+Extension.swift */; };
+		95506B602A2DAACD00326CED /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B5E2A2DAACD00326CED /* DetailProductViewController.swift */; };
+		95506B612A2DAACD00326CED /* DetailProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B5F2A2DAACD00326CED /* DetailProductViewController.xib */; };
+		95506B652A2DAC0100326CED /* DialogWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B632A2DAC0100326CED /* DialogWebViewViewController.swift */; };
+		95506B662A2DAC0100326CED /* DialogWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B642A2DAC0100326CED /* DialogWebViewViewController.xib */; };
 		9563CDFE2A297F1200E5CC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */; };
 		9563CE002A297F1200E5CC8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */; };
 		9563CE022A297F1200E5CC8E /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE012A297F1200E5CC8E /* SelectCountryViewController.swift */; };
@@ -188,6 +192,10 @@
 		95506B552A2D7DEB00326CED /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		95506B562A2D7DEB00326CED /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		95506B592A2D85F900326CED /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		95506B5E2A2DAACD00326CED /* DetailProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
+		95506B5F2A2DAACD00326CED /* DetailProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailProductViewController.xib; sourceTree = "<group>"; };
+		95506B632A2DAC0100326CED /* DialogWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogWebViewViewController.swift; sourceTree = "<group>"; };
+		95506B642A2DAC0100326CED /* DialogWebViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogWebViewViewController.xib; sourceTree = "<group>"; };
 		9563CDFA2A297F1200E5CC8E /* test_meli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_meli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -358,6 +366,40 @@
 			path = Product;
 			sourceTree = "<group>";
 		};
+		95506B5B2A2DAA7D00326CED /* DetailProduct */ = {
+			isa = PBXGroup;
+			children = (
+				95506B5D2A2DAA9100326CED /* ViewModel */,
+				95506B5C2A2DAA8B00326CED /* View */,
+			);
+			path = DetailProduct;
+			sourceTree = "<group>";
+		};
+		95506B5C2A2DAA8B00326CED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95506B5E2A2DAACD00326CED /* DetailProductViewController.swift */,
+				95506B5F2A2DAACD00326CED /* DetailProductViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95506B5D2A2DAA9100326CED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95506B622A2DABED00326CED /* DialogWebView */ = {
+			isa = PBXGroup;
+			children = (
+				95506B632A2DAC0100326CED /* DialogWebViewViewController.swift */,
+				95506B642A2DAC0100326CED /* DialogWebViewViewController.xib */,
+			);
+			path = DialogWebView;
+			sourceTree = "<group>";
+		};
 		9563CDF12A297F1200E5CC8E = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +519,7 @@
 		9563CE482A299E6000E5CC8E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				95506B5B2A2DAA7D00326CED /* DetailProduct */,
 				959B98342A2BC12200CA313B /* ListProducts */,
 				9563CE492A299E7400E5CC8E /* SelectCountry */,
 			);
@@ -559,6 +602,7 @@
 		959B98262A29C4E500CA313B /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				95506B622A2DABED00326CED /* DialogWebView */,
 				959B98652A2D22C700CA313B /* DialogSelectOnlyOption */,
 				959B98272A29C4F400CA313B /* AlerMessageThreeOptions */,
 			);
@@ -809,6 +853,7 @@
 				959B98402A2BE01600CA313B /* SearchBarView.xib in Resources */,
 				95506B582A2D7DEB00326CED /* ItemCollectionViewCell.xib in Resources */,
 				959B98542A2BE09F00CA313B /* FiltersTableView.xib in Resources */,
+				95506B612A2DAACD00326CED /* DetailProductViewController.xib in Resources */,
 				959B984F2A2BE09100CA313B /* FiltersTableViewCell.xib in Resources */,
 				959B98442A2BE05300CA313B /* FilterCategoryView.xib in Resources */,
 				959B984B2A2BE08400CA313B /* DialogSelectMultiFilter.storyboard in Resources */,
@@ -820,6 +865,7 @@
 				959B982D2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib in Resources */,
 				9563CE072A297F1400E5CC8E /* Assets.xcassets in Resources */,
 				9563CE052A297F1200E5CC8E /* SelectCountry.storyboard in Resources */,
+				95506B662A2DAC0100326CED /* DialogWebViewViewController.xib in Resources */,
 				9563CE502A29A53F00E5CC8E /* SelectedContryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,6 +1013,7 @@
 				95506B5A2A2D85F900326CED /* Double+Extension.swift in Sources */,
 				78248CE22A2CF73800F357E9 /* ValueType.swift in Sources */,
 				78248CD82A2CF73800F357E9 /* StateID.swift in Sources */,
+				95506B652A2DAC0100326CED /* DialogWebViewViewController.swift in Sources */,
 				78248CE42A2CF73800F357E9 /* Mode.swift in Sources */,
 				78248CF02A2CF73800F357E9 /* TransactionsPeriod.swift in Sources */,
 				78248CF52A2CF73800F357E9 /* Condition.swift in Sources */,
@@ -987,6 +1034,7 @@
 				78248CD62A2CF73800F357E9 /* Sales.swift in Sources */,
 				959B985D2A2BE16100CA313B /* ProductRepository.swift in Sources */,
 				959B98252A29BE5A00CA313B /* ContryRepository.swift in Sources */,
+				95506B602A2DAACD00326CED /* DetailProductViewController.swift in Sources */,
 				78248CE52A2CF73800F357E9 /* PowerSellerStatus.swift in Sources */,
 				959B985F2A2BE36100CA313B /* CategoryData.swift in Sources */,
 				78248C8D2A2CB91A00F357E9 /* CatagoriesRepository.swift in Sources */,
