@@ -15,6 +15,7 @@ class DialogSelectMultiFilterViewController: UIViewController {
     
     var delegate: FiltersTableViewDelegate?
     var ok: ((String) -> Void)?
+    var cancel: (() -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +28,10 @@ class DialogSelectMultiFilterViewController: UIViewController {
         filtersTableView.apply = {
             self.dismiss(animated: true, completion: nil)
         } 
+    }
+    
+    @IBAction func closePressed(button: UIButton){
+        self.dismiss(animated: true)
     }
     
 }
