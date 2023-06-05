@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - Paging
-struct Paging: Codable {
+class Paging: Codable {
     var total, primaryResults, offset, limit: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -14,45 +14,18 @@ struct Paging: Codable {
         case primaryResults = "primary_results"
         case offset, limit
     }
-}
-
-// MARK: Paging convenience initializers and mutators
-
-extension Paging {
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(Paging.self, from: data)
+    
+    init(total: Int?, primaryResults: Int?, offset: Int?, limit: Int?) {
+        self.total = total
+        self.primaryResults = primaryResults
+        self.offset = offset
+        self.limit = limit
     }
-
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-        guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-        }
-        try self.init(data: data)
-    }
-
-    init(fromURL url: URL) throws {
-        try self.init(data: try Data(contentsOf: url))
-    }
-
-    func with(
-        total: Int?? = nil,
-        primaryResults: Int?? = nil,
-        offset: Int?? = nil,
-        limit: Int?? = nil
-    ) -> Paging {
-        return Paging(
-            total: total ?? self.total,
-            primaryResults: primaryResults ?? self.primaryResults,
-            offset: offset ?? self.offset,
-            limit: limit ?? self.limit
-        )
-    }
-
-    func jsonData() throws -> Data {
-        return try newJSONEncoder().encode(self)
-    }
-
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
+    
+    init() {
+        self.total = nil
+        self.primaryResults = nil
+        self.offset = nil
+        self.limit = nil
     }
 }

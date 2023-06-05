@@ -26,15 +26,15 @@ class ListProductsViewController: UIViewController {
     var listCategoriesFilters = [FilterData]()
     var isLoadingProdcuts = false
     var isLoadingNewProducts = false
-    var products = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
-    var productsBefore = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
-    var categories = [CategoryModel]()
+    var products = ProductData()
+    var productsBefore = ProductData()
+    var categories = [CategoryData]()
     var categoryText: String = ""
     var indexSelectedCategory = 0
     var numberOfItems: Int32 = 10
     var lastContentSizeHeight:CGFloat = 0
 //Send Detail
-    var result = ResultModel(id: "", siteID: "", title: "", price: 0, thumbnail: "  ", permalink: "")
+    var result = Result()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,31 +43,28 @@ class ListProductsViewController: UIViewController {
     }
     
     func initComponent(){
+        productCollectionView.register(ItemCollectionViewCell.nib(), forCellWithReuseIdentifier: ItemCollectionViewCell.identificador)
         listProductsViewModel = ListProductsViewModel(listProductsViewModelDelegate: self)
         filterCategoryView.setCategoryFilter(categoryTextArray: ["Option1", "Option1Option1", "Option1222", "Option1Option1"])
         filterCategoryView.showSpinner()
         filterCategoryView.delegate = self
         sortSelectOptionView.delegate = self
         searchBarView.delegate = self
-
-        productCollectionView.dataSource = self
-        productCollectionView.delegate = self
         showTools()
         if listProductsViewModel?.getKeepSite() == "Save" {
             self.listProductsViewModel?.geInternalSite()
             return
         }
-        listProductsViewModel?.getCategoriesOfSites(siteId: siteModel.id)
-        
+        listProductsViewModel?.getCategoriesOfSites(countryId: countryData.id ?? "")
     }
 
     func reloadDataProducts(){
         noDataView.isHidden = true
         showSpinner()
-        products = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
-        productsBefore = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
-        products = listProductsViewModel?.setCatogoryProduct(nameCategory: categoryText, categoryModel: self.categories[indexSelectedCategory], productModel: products) ?? products
-        products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productModel: products) ?? products
+        products = ProductData()
+        productsBefore = ProductData()
+        products = listProductsViewModel?.setCatogoryProduct(nameCategory: categoryText, categoryModel: self.categories[indexSelectedCategory], productData: products) ?? products
+        products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productData: products) ?? products
         lastContentSizeHeight = 0
         
         loadDataProducts()
@@ -77,14 +74,14 @@ class ListProductsViewController: UIViewController {
         isLoadingProdcuts = true
         productCollectionView.reloadData()
         productsBefore = products
-        listProductsViewModel?.getProducts(siteId: siteModel.id, productModel: products)
+        listProductsViewModel?.getProducts(countryId: countryData.id ?? "", productData: products)
     }
 
     func loadSearchDataProducts(textSearch: String) {
         isLoadingProdcuts = true
         productCollectionView.reloadData()
         productsBefore = products
-        listProductsViewModel?.getProducts(siteId: siteModel.id, textSearch: textSearch)
+        listProductsViewModel?.getProducts(countryId: countryData.id ?? "", textSearch: textSearch)
     }
     
     func showTools(){
@@ -132,10 +129,10 @@ extension ListProductsViewController: SearchBarViewDelegate {
 
         if text.count >= 1{
             hideTools()
-            products = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
-            productsBefore = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
+            products = ProductData()
+            productsBefore = ProductData()
 
-            products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productModel: products) ?? products
+            products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productData: products) ?? products
             lastContentSizeHeight = 0
             
             loadSearchDataProducts(textSearch: text)
@@ -169,25 +166,32 @@ extension ListProductsViewController: selectCategoryDelegate {
 }
 //MARK: -ListProductsViewModel
 extension ListProductsViewController: ListProductsViewModelDelegate {
-    func listProductsViewModel(succesGetSite siteModel: SiteModel) {
-        self.siteModel = siteModel
+    func listProductsViewModel(succesGetSite countryData: CountryData) {
+        self.countryData = countryData
     }
     
-    func listProductsViewModel(succesGetProduct products: ProductModel) {
+    func listProductsViewModel(succesGetProduct products: ProductData) {
         stopSpinner()
-        var productsNewsResult = self.products.results
-        productsNewsResult.append(contentsOf: products.results)
+        var productsNewsResult = self.products.results ?? [Result]()
+        productsNewsResult.append(contentsOf: products.results ?? [Result]())
         self.products = products
         self.products.results = productsNewsResult
-        sortSelectOptionView.arrayList = listProductsViewModel?.getListTextSortInternal(productModel: self.products) ?? [String]()
-        listCategoriesFilters = listProductsViewModel?.getFiltersAvaible(productModel: self.products) ?? [FilterData]()
+        if self.products.results?.isEmpty ?? false {
+            noDataView.isHidden = false
+            hideTools()
+            return
+        }
+        noDataView.isHidden = true
+        showTools()
+        sortSelectOptionView.arrayList = listProductsViewModel?.getListTextSortInternal(productData: self.products) ?? [String]()
+        listCategoriesFilters = listProductsViewModel?.getFiltersAvaible(productData: self.products) ?? [FilterData]()
         productCollectionView.setContentOffset(CGPoint(x: 0, y: lastContentSizeHeight), animated: false)
         isLoadingProdcuts = false
         productCollectionView.reloadData()
         
     }
     
-    func listProductsViewModel(succesGetCategories categories: [CategoryModel]) {
+    func listProductsViewModel(succesGetCategories categories: [CategoryData]) {
         filterCategoryView.stopSpinner()
         self.categories = categories
         var listTextCategories = [String]()
@@ -214,12 +218,12 @@ extension ListProductsViewController: SelectOptionViewDelegate {
     func selectOptionView(didSelectedItem item: String, index: Int) {
         //indexSelectedSort = index
         //loadProducts()
-        self.products = listProductsViewModel?.setSortValue(nameSort: item, productModel: self.products) ?? self.products
-        products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productModel: products) ?? products
+        self.products = listProductsViewModel?.setSortValue(nameSort: item, productData: self.products) ?? self.products
+        products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productData: products) ?? products
         lastContentSizeHeight = 0
         
         loadDataProducts()
-        products = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
+        products = ProductData()
     }
     
     func selectOptionView(didCancel item: String) {
@@ -243,11 +247,11 @@ extension ListProductsViewController: FiltersTableViewDelegate{
         
         filtersLabel.text = text
         
-        self.products = listProductsViewModel?.setNewFilters(listFilterData: self.listCategoriesFilters, productModel: self.products) ?? self.products
-        products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productModel: products) ?? products
+        self.products = listProductsViewModel?.setNewFilters(listFilterData: self.listCategoriesFilters, productData: self.products) ?? self.products
+        products = listProductsViewModel?.setInitOffsetAndLimit(numberOfItems: numberOfItems, productData: products) ?? products
         lastContentSizeHeight = 0
         loadDataProducts()
-        products = ProductModel(siteID: "", paging: Paging(total: 0, primaryResults: 0, offset: 0, limit: 0), results: [ResultModel](), secondaryResults: [JSONAny](), relatedResults: [JSONAny](), sort: Sort(id: "", name: ""), availableSorts: [Sort](), filters: [Filter](), availableFilters: [AvailableFilter]())
+        products = ProductData()
     }
     
     
@@ -259,21 +263,21 @@ extension ListProductsViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return isLoadingProdcuts ? 3 : products.results.count + (products.paging.total <= (self.products.paging.offset + Int(numberOfItems)) ? 0 : 3)
+        return isLoadingProdcuts ? 3 : (products.results ?? []).count + ((products.paging?.total ?? 0) <= ((self.products.paging?.offset ?? 0) + Int(numberOfItems)) ? 0 : 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identificador, for: indexPath) as? ItemCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        if (indexPath.row) >= products.results.count {
+        if (indexPath.row) >= products.results?.count ?? 0 {
             cell.showSpinner()
         } else if (isLoadingProdcuts){
             cell.showSpinner()
         }else {
             cell.stopSpinner()
-            cell.setValue(result: products.results[indexPath.row])
+            cell.setValue(result: products.results?[indexPath.row] ?? Result())
         }
         return cell
     }
@@ -281,7 +285,7 @@ extension ListProductsViewController: UICollectionViewDataSource {
 //MARK: -UICollectionViewDelegate
 extension ListProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        result = products.results[indexPath.row]
+        result = products.results?[indexPath.row] ?? Result()
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
 }
@@ -298,11 +302,11 @@ extension ListProductsViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.y >= contentScrollTrigger {
             //initIndexOffset += (numberItemForPage + 1)
             if isLoadingNewProducts && !isLoadingProdcuts {
-                if products.paging.total <= (self.products.paging.offset + Int(numberOfItems)) {
+                if (products.paging?.total ?? 0) <= ((self.products.paging?.offset ?? 0) + Int(numberOfItems)) {
                     isLoadingNewProducts = false
                     return
                 }
-                self.products = listProductsViewModel?.addItems(numberOfItems: numberOfItems, productModel: self.products) ?? self.products
+                self.products = listProductsViewModel?.addItems(numberOfItems: numberOfItems, productData: self.products) ?? self.products
                 isLoadingNewProducts = false
                 lastContentSizeHeight = scrollView.contentOffset.y
                 
@@ -316,12 +320,11 @@ extension ListProductsViewController: UIScrollViewDelegate {
         
     }
 }
-//MARK: -prepare
+//MARK: -Show
 extension ListProductsViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? DetailProductViewController {
-            vc.result = result
-        }
+    static func navigationShow(controller: UIViewController, countryData: CountryData) {
+        let listProductsViewController = ListProductsViewController(nibName: "ListProductsViewController", bundle: nil)
+        listProductsViewController.countryData = countryData
+        controller.navigationController?.pushViewController(listProductsViewController, animated: true)
     }
 }
-

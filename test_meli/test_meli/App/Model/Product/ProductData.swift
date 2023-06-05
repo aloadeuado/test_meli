@@ -24,53 +24,15 @@ class ProductData: Codable {
         case filters
         case availableFilters = "available_filters"
     }
-}
-
-// MARK: ProductData convenience initializers and mutators
-
-extension ProductData {
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(ProductData.self, from: data)
-    }
-
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-        guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-        }
-        try self.init(data: data)
-    }
-
-    init(fromURL url: URL) throws {
-        try self.init(data: try Data(contentsOf: url))
-    }
-
-    func with(
-        siteID: SiteID?? = nil,
-        countryDefaultTimeZone: String?? = nil,
-        paging: Paging?? = nil,
-        results: [Result]?? = nil,
-        sort: Sort?? = nil,
-        availableSorts: [Sort]?? = nil,
-        filters: [Filter]?? = nil,
-        availableFilters: [AvailableFilter]?? = nil
-    ) -> ProductData {
-        return ProductData(
-            siteID: siteID ?? self.siteID,
-            countryDefaultTimeZone: countryDefaultTimeZone ?? self.countryDefaultTimeZone,
-            paging: paging ?? self.paging,
-            results: results ?? self.results,
-            sort: sort ?? self.sort,
-            availableSorts: availableSorts ?? self.availableSorts,
-            filters: filters ?? self.filters,
-            availableFilters: availableFilters ?? self.availableFilters
-        )
-    }
-
-    func jsonData() throws -> Data {
-        return try newJSONEncoder().encode(self)
-    }
-
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
+    
+    init() {
+        self.siteID = nil
+        self.countryDefaultTimeZone = nil
+        self.paging = nil
+        self.results = nil
+        self.sort = nil
+        self.availableSorts = nil
+        self.filters = nil
+        self.availableFilters = nil
     }
 }

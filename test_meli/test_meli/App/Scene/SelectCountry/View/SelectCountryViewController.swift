@@ -33,7 +33,9 @@ class SelectedContryViewController: UIViewController {
         isLoadingSites = true
         selectedContryViewModel?.getCountriesDetail()
         setStateButton()
-        
+        if selectedContryViewModel?.getKeepSite() == "Save" {
+            ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
+        }
     }
     
     func selectedSite(indexPath: IndexPath){
@@ -70,10 +72,10 @@ extension SelectedContryViewController {
             AlerMessageThreeOptionsViewController.show(controller: self, textMessagge: "You have already selected a site. What do you want to do with this decision?".localized) {
                 self.selectedContryViewModel?.setKeepSite()
                 self.selectedContryViewModel?.setInternalSite(countryData: siteModel1)
-                self.performSegue(withIdentifier: "showListProduct", sender: nil)
+                ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
             } option2: {
                 self.selectedContryViewModel?.setInternalSite(countryData: siteModel1)
-                self.performSegue(withIdentifier: "showListProduct", sender: nil)
+                ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
             } option3: {
                 
             }

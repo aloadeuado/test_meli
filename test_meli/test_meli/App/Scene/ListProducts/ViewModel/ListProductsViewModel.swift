@@ -52,6 +52,7 @@ class ListProductsViewModel{
     }
     
     func setInitOffsetAndLimit(numberOfItems: Int32, productData:ProductData) -> ProductData {
+        productData.paging = Paging(total: 0, primaryResults: 0, offset: 0, limit: Int(numberOfItems))
         productData.paging?.offset = 0
         productData.paging?.limit = Int(numberOfItems)
         
@@ -142,9 +143,10 @@ class ListProductsViewModel{
     }
     
     func getCategoriesOfSites(countryId: String) {
-        CatagoriesRepository.getCategoriesOfSites(countryId: countryId) { success, listCategoryData, err in
+        CatagoriesRepository.getCategoriesOfSites(countryId: countryId) { [weak self] success, listCategoryData, err in
+            guard let self = self else {return}
             if success {
-                if let listCategoryData = listCategoryData, listCategoryData.isEmpty {
+                if let listCategoryData = listCategoryData, !listCategoryData.isEmpty {
                     self.listProductsViewModelDelegate?.listProductsViewModel(succesGetCategories: listCategoryData)
                     return
                 }
@@ -153,29 +155,39 @@ class ListProductsViewModel{
         }
     }
     
-    func getProducts(siteId: String, productData: ProductData){
-        productRepository.getProducts(siteId: siteId, productModel: ProductData) { (product) in
-            self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: product)
-        } error: { (error) in
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: error)
+    func getProducts(countryId: String, productData: ProductData){
+        ProductRepository.getProducts(countryCode: countryId, productData: productData) { [weak self] success, productData, err in
+            guard let self = self else {return}
+            if success {
+                if let productData = productData {
+                    self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: productData)
+                    return
+                }
+            }
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
         }
     }
     
-    func getProducts(siteId: String, textSearch: String){
-        productRepository.getProducts(siteId: siteId, textSearch: textSearch) { (product) in
-            self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: product)
-        } error: { (error) in
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: error)
+    func getProducts(countryId: String, textSearch: String){
+        ProductRepository.getProducts(countryCode: countryId, textSearch: textSearch) { [weak self] success, productData, err in
+            guard let self = self else {return}
+            if success {
+                if let productData = productData {
+                    self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: productData)
+                    return
+                }
+            }
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
         }
     }
 
     func geInternalSite(){
-        let result = contryRepository.getInternalSite()
+        let result = ContryRepository.getInternalSite()
         if result.error != "" {
             self.listProductsViewModelDelegate?.listProductsViewModel(onError: result.error)
         } else {
-            if let site = result.siteModel {
-                getCategoriesOfSites(siteId: site.id)
+            if let site = result.countryData {
+                getCategoriesOfSites(countryId: site.id ?? "")
                 self.listProductsViewModelDelegate?.listProductsViewModel(succesGetSite: site)
             }
             

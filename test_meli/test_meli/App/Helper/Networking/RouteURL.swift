@@ -38,3 +38,21 @@ func getItemsOfCategoryRoute(countryId: String, categoryId: String) -> String {
 func getItemsOfSearchTextRoute(countryId: String, text: String) -> String {
     return getStringOfInfo(key: "API_BASE_URL") + "/sites/\(countryId)/search?q=\(text)"
 }
+
+func getProductsRouter(countryId: String, productData: ProductData) -> String {
+    var url = getStringOfInfo(key: "API_BASE_URL") + "/sites/\(countryId)/search?"
+    url += "limit=\(productData.paging?.limit ?? 0)"
+    url += "&offset=\(productData.paging?.offset ?? 0)"
+    url += (productData.sort?.id == "") ? "" : "&sort=\(productData.sort?.id ?? "")"
+    productData.filters?.forEach { (filter) in
+        let idFilter = filter.id
+        filter.values?.forEach { (filterValue) in
+            url += "&\(idFilter ?? "")=\(filterValue.id ?? "")"
+        }
+    }
+    if let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+        url = urlString
+    }
+    
+    return url
+}

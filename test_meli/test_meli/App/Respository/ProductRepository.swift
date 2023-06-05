@@ -7,7 +7,32 @@
 
 import Foundation
 struct ProductRepository {
-    static func getCategoriesOfSites(countryCode: String, complete: @escaping ((Bool, [CountryData]?, String?) -> Void )) {
+    static func getProducts(countryCode: String, productData: ProductData, complete: @escaping ((Bool, ProductData?, String?) -> Void )) {
+        let url = getProductsRouter(countryId: countryCode, productData: productData)
         
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: ProductData.self) { success, productData, err in
+            DispatchQueue.main.async {
+                if success {
+                    complete(true, productData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
+            }
+        }
+    }
+    
+    static func getProducts(countryCode: String, textSearch: String, complete: @escaping ((Bool, ProductData?, String?) -> Void )){
+        var url = getItemsOfSearchTextRoute(countryId: countryCode, text: textSearch)
+
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: ProductData.self) { success, productData, err in
+            DispatchQueue.main.async {
+                if success {
+                    complete(true, productData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
+            }
+        }
+
     }
 }

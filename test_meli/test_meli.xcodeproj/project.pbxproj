@@ -57,6 +57,9 @@
 		78248CFD2A2CF73800F357E9 /* LevelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CCF2A2CF73700F357E9 /* LevelID.swift */; };
 		78248CFE2A2CF73800F357E9 /* Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CD02A2CF73700F357E9 /* Paging.swift */; };
 		78248CFF2A2CF73800F357E9 /* ResultTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CD12A2CF73800F357E9 /* ResultTag.swift */; };
+		95506B572A2D7DEB00326CED /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B552A2D7DEB00326CED /* ItemCollectionViewCell.swift */; };
+		95506B582A2D7DEB00326CED /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B562A2D7DEB00326CED /* ItemCollectionViewCell.xib */; };
+		95506B5A2A2D85F900326CED /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B592A2D85F900326CED /* Double+Extension.swift */; };
 		9563CDFE2A297F1200E5CC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */; };
 		9563CE002A297F1200E5CC8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */; };
 		9563CE022A297F1200E5CC8E /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE012A297F1200E5CC8E /* SelectCountryViewController.swift */; };
@@ -99,6 +102,8 @@
 		959B985B2A2BE12300CA313B /* ListProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B985A2A2BE12300CA313B /* ListProductsViewModel.swift */; };
 		959B985D2A2BE16100CA313B /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B985C2A2BE16100CA313B /* ProductRepository.swift */; };
 		959B985F2A2BE36100CA313B /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B985E2A2BE36100CA313B /* CategoryData.swift */; };
+		959B986C2A2D231200CA313B /* DialogSelectOnlyOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B986A2A2D231200CA313B /* DialogSelectOnlyOptionViewController.swift */; };
+		959B986D2A2D231200CA313B /* DialogSelectOnlyOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959B986B2A2D231200CA313B /* DialogSelectOnlyOptionViewController.xib */; };
 		B404DB8579FCB786805860CF /* Pods_test_meli.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A669030F67477350268C76 /* Pods_test_meli.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +185,9 @@
 		78248CD12A2CF73800F357E9 /* ResultTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTag.swift; sourceTree = "<group>"; };
 		7910D472F53A3F0CBFE41042 /* Pods-test_meli-test_meliUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A27451A3726897F72EB80B7 /* Pods-test_meli.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug_qa.xcconfig"; sourceTree = "<group>"; };
+		95506B552A2D7DEB00326CED /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		95506B562A2D7DEB00326CED /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		95506B592A2D85F900326CED /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		9563CDFA2A297F1200E5CC8E /* test_meli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_meli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +237,8 @@
 		959B985A2A2BE12300CA313B /* ListProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsViewModel.swift; sourceTree = "<group>"; };
 		959B985C2A2BE16100CA313B /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
 		959B985E2A2BE36100CA313B /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
+		959B986A2A2D231200CA313B /* DialogSelectOnlyOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSelectOnlyOptionViewController.swift; sourceTree = "<group>"; };
+		959B986B2A2D231200CA313B /* DialogSelectOnlyOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogSelectOnlyOptionViewController.xib; sourceTree = "<group>"; };
 		9E9407F78901FCFEF908831E /* Pods-test_meliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meliTests.debug.xcconfig"; path = "Target Support Files/Pods-test_meliTests/Pods-test_meliTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0959F0BEAE27E4A4DE51E4E /* Pods-test_meli.debug_dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli.debug_dev.xcconfig"; path = "Target Support Files/Pods-test_meli/Pods-test_meli.debug_dev.xcconfig"; sourceTree = "<group>"; };
 		CBFA3AEEF357B8D67782F2DA /* Pods-test_meli-test_meliUITests.debug_qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; path = "Target Support Files/Pods-test_meli-test_meliUITests/Pods-test_meli-test_meliUITests.debug_qa.xcconfig"; sourceTree = "<group>"; };
@@ -521,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				959B981A2A29BB3200CA313B /* String+Extension.swift */,
+				95506B592A2D85F900326CED /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -548,6 +559,7 @@
 		959B98262A29C4E500CA313B /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				959B98652A2D22C700CA313B /* DialogSelectOnlyOption */,
 				959B98272A29C4F400CA313B /* AlerMessageThreeOptions */,
 			);
 			path = Alert;
@@ -574,6 +586,7 @@
 		959B98352A2BC12B00CA313B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				959B98602A2D154B00CA313B /* Cell */,
 				959B983B2A2BDFF700CA313B /* Reusable */,
 				959B98372A2BC16200CA313B /* ListProductsViewController.swift */,
 				959B98382A2BC16200CA313B /* ListProductsViewController.xib */,
@@ -654,6 +667,24 @@
 				959B98562A2BE0FF00CA313B /* SelectOptionView.xib */,
 			);
 			path = SelectOption;
+			sourceTree = "<group>";
+		};
+		959B98602A2D154B00CA313B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95506B552A2D7DEB00326CED /* ItemCollectionViewCell.swift */,
+				95506B562A2D7DEB00326CED /* ItemCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		959B98652A2D22C700CA313B /* DialogSelectOnlyOption */ = {
+			isa = PBXGroup;
+			children = (
+				959B986A2A2D231200CA313B /* DialogSelectOnlyOptionViewController.swift */,
+				959B986B2A2D231200CA313B /* DialogSelectOnlyOptionViewController.xib */,
+			);
+			path = DialogSelectOnlyOption;
 			sourceTree = "<group>";
 		};
 		CE3C028D51664C756C46E078 /* Frameworks */ = {
@@ -776,6 +807,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				959B98402A2BE01600CA313B /* SearchBarView.xib in Resources */,
+				95506B582A2D7DEB00326CED /* ItemCollectionViewCell.xib in Resources */,
 				959B98542A2BE09F00CA313B /* FiltersTableView.xib in Resources */,
 				959B984F2A2BE09100CA313B /* FiltersTableViewCell.xib in Resources */,
 				959B98442A2BE05300CA313B /* FilterCategoryView.xib in Resources */,
@@ -784,6 +816,7 @@
 				959B983A2A2BC16200CA313B /* ListProductsViewController.xib in Resources */,
 				959B98162A29B6CD00CA313B /* Localizable.strings in Resources */,
 				9563CE0A2A297F1400E5CC8E /* LaunchScreen.storyboard in Resources */,
+				959B986D2A2D231200CA313B /* DialogSelectOnlyOptionViewController.xib in Resources */,
 				959B982D2A29C65300CA313B /* AlerMessageThreeOptionsViewController.xib in Resources */,
 				9563CE072A297F1400E5CC8E /* Assets.xcassets in Resources */,
 				9563CE052A297F1200E5CC8E /* SelectCountry.storyboard in Resources */,
@@ -931,6 +964,7 @@
 				78248CFD2A2CF73800F357E9 /* LevelID.swift in Sources */,
 				959B98452A2BE05300CA313B /* FilterCategoryView.swift in Sources */,
 				78248CFA2A2CF73800F357E9 /* SellerAddress.swift in Sources */,
+				95506B5A2A2D85F900326CED /* Double+Extension.swift in Sources */,
 				78248CE22A2CF73800F357E9 /* ValueType.swift in Sources */,
 				78248CD82A2CF73800F357E9 /* StateID.swift in Sources */,
 				78248CE42A2CF73800F357E9 /* Mode.swift in Sources */,
@@ -948,6 +982,7 @@
 				78248CFE2A2CF73800F357E9 /* Paging.swift in Sources */,
 				78248CDA2A2CF73800F357E9 /* SiteID.swift in Sources */,
 				78248CF72A2CF73800F357E9 /* CancellationsPeriod.swift in Sources */,
+				95506B572A2D7DEB00326CED /* ItemCollectionViewCell.swift in Sources */,
 				959B98532A2BE09F00CA313B /* FiltersTableView.swift in Sources */,
 				78248CD62A2CF73800F357E9 /* Sales.swift in Sources */,
 				959B985D2A2BE16100CA313B /* ProductRepository.swift in Sources */,
@@ -961,6 +996,7 @@
 				78248CF62A2CF73800F357E9 /* AttributeValue.swift in Sources */,
 				78248CEB2A2CF73800F357E9 /* StateName.swift in Sources */,
 				959B984C2A2BE08400CA313B /* DialogSelectMultiFilterViewController.swift in Sources */,
+				959B986C2A2D231200CA313B /* DialogSelectOnlyOptionViewController.swift in Sources */,
 				959B98202A29BD6300CA313B /* CustomButton.swift in Sources */,
 				959B983F2A2BE01600CA313B /* SearchBarView.swift in Sources */,
 				78248CDE2A2CF73800F357E9 /* Ratings.swift in Sources */,
