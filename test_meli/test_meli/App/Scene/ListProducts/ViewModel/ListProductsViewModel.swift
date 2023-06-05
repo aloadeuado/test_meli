@@ -13,7 +13,7 @@ class ListProductsViewModel{
     init(listProductsViewModelDelegate: ListProductsViewModelDelegate) {
         self.listProductsViewModelDelegate = listProductsViewModelDelegate
     }
-    func setCatogoryProduct(nameCategory: String, categoryModel: CategoryData,productData:ProductData) -> ProductData {
+    func setCatogoryProduct(nameCategory: String, categoryModel: CategoryData, productData: ProductData) -> ProductData {
         guard let categoryFilterAvaible = productData.availableFilters?.first(where: { (availableFilter) -> Bool in
             return availableFilter.id == "category"
         }) else {
@@ -73,21 +73,54 @@ class ListProductsViewModel{
     
     func getFiltersAvaible(productData: ProductData) -> [FilterData] {
         var listFilter = [FilterData]()
+        productData.filters?.forEach({ filter in
+            let idTitle = filter.id ?? ""
+            let nameTitle = filter.name ?? ""
+            listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: "", nameValue: "", isTitle: true, state: false))
+            let listInternalFilter = filter.values?.map({ filterValue in
+                let idValue = filterValue.id ?? ""
+                let nameValue = filterValue.name ?? ""
+                return FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: true)
+            })
+            listFilter.append(contentsOf: listInternalFilter ?? [])
+            if let availableFilterInternal = productData.availableFilters?.first(where: { availableFilter in
+                return availableFilter.id == idTitle
+            }) {
+                let listAvailableFilterValue = availableFilterInternal.values?.map({ availableFilterValue in
+                    let idValue = availableFilterValue.id ?? ""
+                    let nameValue = availableFilterValue.name ?? ""
+                    return FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: false)
+                })
+                listFilter.append(contentsOf: listAvailableFilterValue ?? [])
+            }
+            
+            
+        })
+        
         productData.availableFilters?.forEach { (availableFilter) in
             let idTitle = availableFilter.id ?? ""
             let nameTitle = availableFilter.name ?? ""
-            listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: "", nameValue: "", isTitle: true, state: false))
-            availableFilter.values?.forEach { (availableFilterValue) in
-                let idValue = availableFilterValue.id ?? ""
-                let nameValue = availableFilterValue.name ?? ""
-                var state = false
-                if let _ = productData.filters?.first(where: { (filter) -> Bool in
-                    return filter.id == availableFilterValue.id
-                }) {
-                    state = true
+            
+            if let _ = productData.filters?.first(where: { filter in
+                return filter.id == availableFilter.id
+            }) {
+
+            } else {
+                listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: "", nameValue: "", isTitle: true, state: false))
+                
+                availableFilter.values?.forEach { (availableFilterValue) in
+                    let idValue = availableFilterValue.id ?? ""
+                    let nameValue = availableFilterValue.name ?? ""
+                    var state = false
+                    if let _ = productData.filters?.first(where: { (filter) -> Bool in
+                        return filter.id == availableFilterValue.id
+                    }) {
+                        state = true
+                    }
+                    listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: state))
                 }
-                listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: state))
             }
+            
             
         }
         
@@ -104,7 +137,7 @@ class ListProductsViewModel{
             if let filterSelect = listFilterData1.first(where: { (filterData) -> Bool in
                 return filterData.idTitle == filter.id
             }) {
-                var filterSend = Filter(id: filterSelect.idTitle, name: filterSelect.nameTitle, type: "", values: [FilterValue]())
+                let filterSend = Filter(id: filterSelect.idTitle, name: filterSelect.nameTitle, type: "", values: [FilterValue]())
                 filter.values?.forEach { (availableFilterValue) in
                     if let filterValueSelect = listFilterData1.first(where: { (filterData) -> Bool in
                         return filterData.idValue == availableFilterValue.id

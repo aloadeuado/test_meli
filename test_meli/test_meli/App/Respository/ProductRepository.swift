@@ -22,7 +22,7 @@ struct ProductRepository {
     }
     
     static func getProducts(countryCode: String, textSearch: String, complete: @escaping ((Bool, ProductData?, String?) -> Void )){
-        var url = getItemsOfSearchTextRoute(countryId: countryCode, text: textSearch)
+        let url = getItemsOfSearchTextRoute(countryId: countryCode, text: textSearch)
 
         ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: ProductData.self) { success, productData, err in
             DispatchQueue.main.async {
