@@ -64,6 +64,10 @@
 		95506B612A2DAACD00326CED /* DetailProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B5F2A2DAACD00326CED /* DetailProductViewController.xib */; };
 		95506B652A2DAC0100326CED /* DialogWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B632A2DAC0100326CED /* DialogWebViewViewController.swift */; };
 		95506B662A2DAC0100326CED /* DialogWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B642A2DAC0100326CED /* DialogWebViewViewController.xib */; };
+		95506B6C2A2E2A1900326CED /* CarouselImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B6A2A2E2A1900326CED /* CarouselImageViewController.swift */; };
+		95506B6D2A2E2A1900326CED /* CarouselImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B6B2A2E2A1900326CED /* CarouselImageViewController.xib */; };
+		95506B712A2E2B1400326CED /* CarouselImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95506B6F2A2E2B1400326CED /* CarouselImageCollectionViewCell.swift */; };
+		95506B722A2E2B1400326CED /* CarouselImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95506B702A2E2B1400326CED /* CarouselImageCollectionViewCell.xib */; };
 		9563CDFE2A297F1200E5CC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */; };
 		9563CE002A297F1200E5CC8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */; };
 		9563CE022A297F1200E5CC8E /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563CE012A297F1200E5CC8E /* SelectCountryViewController.swift */; };
@@ -196,6 +200,10 @@
 		95506B5F2A2DAACD00326CED /* DetailProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailProductViewController.xib; sourceTree = "<group>"; };
 		95506B632A2DAC0100326CED /* DialogWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogWebViewViewController.swift; sourceTree = "<group>"; };
 		95506B642A2DAC0100326CED /* DialogWebViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogWebViewViewController.xib; sourceTree = "<group>"; };
+		95506B6A2A2E2A1900326CED /* CarouselImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselImageViewController.swift; sourceTree = "<group>"; };
+		95506B6B2A2E2A1900326CED /* CarouselImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselImageViewController.xib; sourceTree = "<group>"; };
+		95506B6F2A2E2B1400326CED /* CarouselImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		95506B702A2E2B1400326CED /* CarouselImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		9563CDFA2A297F1200E5CC8E /* test_meli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_meli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9563CDFD2A297F1200E5CC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9563CDFF2A297F1200E5CC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -378,6 +386,7 @@
 		95506B5C2A2DAA8B00326CED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				95506B682A2E286400326CED /* Reusable */,
 				95506B5E2A2DAACD00326CED /* DetailProductViewController.swift */,
 				95506B5F2A2DAACD00326CED /* DetailProductViewController.xib */,
 			);
@@ -398,6 +407,33 @@
 				95506B642A2DAC0100326CED /* DialogWebViewViewController.xib */,
 			);
 			path = DialogWebView;
+			sourceTree = "<group>";
+		};
+		95506B682A2E286400326CED /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				95506B692A2E289600326CED /* CarouselImage */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		95506B692A2E289600326CED /* CarouselImage */ = {
+			isa = PBXGroup;
+			children = (
+				95506B6E2A2E2AE600326CED /* Cell */,
+				95506B6A2A2E2A1900326CED /* CarouselImageViewController.swift */,
+				95506B6B2A2E2A1900326CED /* CarouselImageViewController.xib */,
+			);
+			path = CarouselImage;
+			sourceTree = "<group>";
+		};
+		95506B6E2A2E2AE600326CED /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95506B6F2A2E2B1400326CED /* CarouselImageCollectionViewCell.swift */,
+				95506B702A2E2B1400326CED /* CarouselImageCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		9563CDF12A297F1200E5CC8E = {
@@ -854,8 +890,10 @@
 				95506B582A2D7DEB00326CED /* ItemCollectionViewCell.xib in Resources */,
 				959B98542A2BE09F00CA313B /* FiltersTableView.xib in Resources */,
 				95506B612A2DAACD00326CED /* DetailProductViewController.xib in Resources */,
+				95506B6D2A2E2A1900326CED /* CarouselImageViewController.xib in Resources */,
 				959B984F2A2BE09100CA313B /* FiltersTableViewCell.xib in Resources */,
 				959B98442A2BE05300CA313B /* FilterCategoryView.xib in Resources */,
+				95506B722A2E2B1400326CED /* CarouselImageCollectionViewCell.xib in Resources */,
 				959B984B2A2BE08400CA313B /* DialogSelectMultiFilter.storyboard in Resources */,
 				959B98582A2BE0FF00CA313B /* SelectOptionView.xib in Resources */,
 				959B983A2A2BC16200CA313B /* ListProductsViewController.xib in Resources */,
@@ -1022,6 +1060,7 @@
 				78248CE12A2CF73800F357E9 /* SellerReputation.swift in Sources */,
 				78248CE82A2CF73800F357E9 /* JSONSchemaSupport.swift in Sources */,
 				78248CEE2A2CF73800F357E9 /* BuyingMode.swift in Sources */,
+				95506B712A2E2B1400326CED /* CarouselImageCollectionViewCell.swift in Sources */,
 				9563CE4F2A29A53F00E5CC8E /* SelectedContryTableViewCell.swift in Sources */,
 				78248CFF2A2CF73800F357E9 /* ResultTag.swift in Sources */,
 				959B982A2A29C50E00CA313B /* AlerMessageThreeOptionsViewController.swift in Sources */,
@@ -1030,6 +1069,7 @@
 				78248CDA2A2CF73800F357E9 /* SiteID.swift in Sources */,
 				78248CF72A2CF73800F357E9 /* CancellationsPeriod.swift in Sources */,
 				95506B572A2D7DEB00326CED /* ItemCollectionViewCell.swift in Sources */,
+				95506B6C2A2E2A1900326CED /* CarouselImageViewController.swift in Sources */,
 				959B98532A2BE09F00CA313B /* FiltersTableView.swift in Sources */,
 				78248CD62A2CF73800F357E9 /* Sales.swift in Sources */,
 				959B985D2A2BE16100CA313B /* ProductRepository.swift in Sources */,
