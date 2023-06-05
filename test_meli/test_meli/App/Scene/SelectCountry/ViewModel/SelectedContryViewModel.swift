@@ -49,15 +49,15 @@ class SelectedContryViewModel{
         }
     }
 
-    func getFlagPngForCode(code: String) -> String {
+    func getFlagPngForCode(name: String) -> String {
         return self.listCountryDetailData.first { countryFlagData in
-            return (countryFlagData.cca2 ?? "") == code
+            return (countryFlagData.name?.common ?? "") == name
         }?.flags?.png ?? ""
     }
     
-    func getRegionForCode(code: String) -> String {
+    func getRegionForCode(name: String) -> String {
         return self.listCountryDetailData.first { countryFlagData in
-            return (countryFlagData.cca2 ?? "") == code
+            return (countryFlagData.name?.common ?? "") == name
         }?.region ?? ""
     }
     

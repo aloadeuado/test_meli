@@ -9,11 +9,14 @@ import Foundation
 
 // MARK: - CountryData
 struct CountryData: Codable {
-    let id, name, locale, currencyID: String?
+    var id: String? = ""
+    var name: String? = ""
+    var default_currency_id: String? = ""
+    
     var state = false
+    
     enum CodingKeys: String, CodingKey {
-        case id, name, locale
-        case currencyID = "currency_id"
+        case id, name, default_currency_id
     }
     
     mutating func setState(state: Bool) {

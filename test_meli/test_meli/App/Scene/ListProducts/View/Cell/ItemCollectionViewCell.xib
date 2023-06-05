@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ItemCollectionViewCell" customModule="test_meli" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUE-r1-Cey">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFx-M7-Oss" customClass="CustomView" customModule="test_meli" customModuleProvider="target">
+                                <rect key="frame" x="3" y="3" width="174" height="294"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fk2-Yq-mHp">
+                                        <rect key="frame" x="30" y="19.999999999999993" width="114" height="91.333333333333314"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fk2-Yq-mHp" secondAttribute="height" multiplier="5:4" id="zv9-EN-am6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDW-GP-88N">
+                                        <rect key="frame" x="10" y="126.33333333333334" width="154" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-zV-Z98">
+                                        <rect key="frame" x="10" y="148.33333333333334" width="154" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="fk2-Yq-mHp" firstAttribute="leading" secondItem="PFx-M7-Oss" secondAttribute="leading" constant="30" id="97O-pr-gRf"/>
+                                    <constraint firstItem="fk2-Yq-mHp" firstAttribute="top" secondItem="PFx-M7-Oss" secondAttribute="top" constant="20" id="EYY-Cu-1Xf"/>
+                                    <constraint firstAttribute="trailing" secondItem="LPL-zV-Z98" secondAttribute="trailing" constant="10" id="K7M-l7-h1P"/>
+                                    <constraint firstAttribute="trailing" secondItem="bDW-GP-88N" secondAttribute="trailing" constant="10" id="Kse-fu-h7s"/>
+                                    <constraint firstItem="bDW-GP-88N" firstAttribute="leading" secondItem="PFx-M7-Oss" secondAttribute="leading" constant="10" id="XpA-Sg-1Q0"/>
+                                    <constraint firstAttribute="trailing" secondItem="fk2-Yq-mHp" secondAttribute="trailing" constant="30" id="ZVg-ju-jlq"/>
+                                    <constraint firstItem="LPL-zV-Z98" firstAttribute="top" secondItem="bDW-GP-88N" secondAttribute="bottom" constant="5" id="qAW-fv-Jzw"/>
+                                    <constraint firstItem="bDW-GP-88N" firstAttribute="top" secondItem="fk2-Yq-mHp" secondAttribute="bottom" constant="15" id="wxU-xF-zTr"/>
+                                    <constraint firstItem="LPL-zV-Z98" firstAttribute="leading" secondItem="PFx-M7-Oss" secondAttribute="leading" constant="10" id="x4O-2O-njf"/>
+                                    <constraint firstAttribute="width" secondItem="PFx-M7-Oss" secondAttribute="height" multiplier="29:49" id="z8x-Up-Rhm"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray6Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PFx-M7-Oss" secondAttribute="trailing" constant="3" id="5tk-hy-WJr"/>
+                            <constraint firstItem="PFx-M7-Oss" firstAttribute="leading" secondItem="FUE-r1-Cey" secondAttribute="leading" constant="3" id="Tct-Ko-w2D"/>
+                            <constraint firstItem="PFx-M7-Oss" firstAttribute="top" secondItem="FUE-r1-Cey" secondAttribute="top" constant="3" id="gwZ-fl-eBG"/>
+                            <constraint firstAttribute="bottom" secondItem="PFx-M7-Oss" secondAttribute="bottom" constant="3" id="vNV-Ql-JF0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FUE-r1-Cey" secondAttribute="trailing" id="VoQ-cz-Gfv"/>
+                <constraint firstAttribute="bottom" secondItem="FUE-r1-Cey" secondAttribute="bottom" id="feG-oK-3Ua"/>
+                <constraint firstItem="FUE-r1-Cey" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gIc-3x-uTQ"/>
+                <constraint firstItem="FUE-r1-Cey" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wcX-I6-cQm"/>
+            </constraints>
+            <connections>
+                <outlet property="generalView" destination="PFx-M7-Oss" id="rru-9a-Ph3"/>
+                <outlet property="itemImageView" destination="fk2-Yq-mHp" id="Mjx-xd-LjS"/>
+                <outlet property="itemTitleLabel" destination="bDW-GP-88N" id="avE-YW-uqS"/>
+                <outlet property="priceTitleLabel" destination="LPL-zV-Z98" id="d9k-aX-LhT"/>
+            </connections>
+            <point key="canvasLocation" x="-240" y="21"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
