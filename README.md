@@ -840,11 +840,247 @@ extension AlerMessageThreeOptionsViewController {
     }
 
 ```
+## Test Unit
 
+- nos limitamos a hacer covertura en los unit test en los
+- viewController
+
+```swift
+//
+//  DetailProductViewControllerTests.swift
+//  test_meliTests
+//
+//  Created by Pedro Alonso Daza B on 5/06/23.
+//
+
+import XCTest
+@testable import test_meli
+
+class DetailProductViewControllerTests: XCTestCase {
+
+    var viewController: DetailProductViewController!
+    var viewModel: MockDetailProductViewModel!
+
+    override func setUp() {
+        super.setUp()
+        
+        viewController = DetailProductViewController(nibName: "DetailProductViewController", bundle: nil)
+        viewModel = MockDetailProductViewModel(detailProductViewModelDelegate: viewController)
+        viewController.detailProductViewModel = viewModel
+        
+        let product = Result() // Set with relevant data
+        viewController.result = product
+        viewController.loadViewIfNeeded()
+    }
+    
+    override func tearDown() {
+        viewController = nil
+        viewModel = nil
+        
+        super.tearDown()
+    }
+    
+    func testInitComponent() {
+        viewController.initComponent()
+        XCTAssertTrue(!viewModel.getProductDetailCalled)
+    }
+
+    // Add more tests here
+}
+
+class MockDetailProductViewModel: DetailProductViewModel {
+    
+    var expectation: XCTestExpectation?
+    var getProductDetailCalled = false
+
+    override func getProductDetail(productId: String) {
+        getProductDetailCalled = true
+        expectation?.fulfill()
+    }
+    
+    // override more functions here...
+}
+
+```
+
+- tambien en los viewModel esto con el fin de evaluar algo de los flujos de negocio
+
+```swift
+import XCTest
+@testable import test_meli
+
+class DetailProductViewModelTests: XCTestCase {
+
+    // Mock del delegado
+    class MockDelegate: DetailProductViewModelDelegate {
+        var successGetProductsCalled = false
+        var errorCalled = false
+        
+        func detailProductView(successGetProducts product: ProductDetailData) {
+            successGetProductsCalled = true
+        }
+        
+        func detailProductView(error: String) {
+            errorCalled = true
+        }
+    }
+    
+    var viewModel: DetailProductViewModel!
+    var mockDelegate: MockDelegate!
+    
+    override func setUp() {
+        super.setUp()
+        mockDelegate = MockDelegate()
+        viewModel = DetailProductViewModel(detailProductViewModelDelegate: mockDelegate)
+    }
+    
+    func testDecodeFromJSON() {
+            // Given
+            let jsonString = """
+            {
+                "code": 200,
+                "body": {
+                    "id": "123",
+                    "site_id": "MELI",
+                    "title": "Product Title",
+                    "subtitle": "Product Subtitle",
+                    "seller_id": 456,
+                    "category_id": "789",
+                    "price": 99.99,
+                    "base_price": 129.99,
+                    "original_price": 149.99,
+                    "currency_id": "USD",
+                    "sale_terms": [
+                        {
+                            "id": "1",
+                            "name": "Condition",
+                            "value_name": "New"
+                        },
+                        {
+                            "id": "2",
+                            "name": "Warranty",
+                            "value_name": "1 Year"
+                        }
+                    ],
+                    "pictures": [
+                        {
+                            "id": "1",
+                            "url": "https://example.com/image1.jpg",
+                            "secure_url": "https://example.com/image1.jpg",
+                            "size": "100x100",
+                            "max_size": "1000x1000",
+                            "quality": "HD"
+                        }
+                    ],
+                    "attributes": []
+                }
+            }
+            """
+            let jsonData = jsonString.data(using: .utf8)!
+            
+            // When
+            let decoder = JSONDecoder()
+            let productDetailData = try! decoder.decode(ProductDetailData.self, from: jsonData)
+            
+            // Then
+            XCTAssertEqual(productDetailData.code, 200)
+            XCTAssertEqual(productDetailData.body?.id, "123")
+            XCTAssertEqual(productDetailData.body?.siteID, "MELI")
+            XCTAssertEqual(productDetailData.body?.title, "Product Title")
+            XCTAssertEqual(productDetailData.body?.subtitle, "Product Subtitle")
+            XCTAssertEqual(productDetailData.body?.sellerID, 456)
+            XCTAssertEqual(productDetailData.body?.categoryID, "789")
+            XCTAssertEqual(productDetailData.body?.price, 99.99)
+            XCTAssertEqual(productDetailData.body?.basePrice, 129.99)
+            XCTAssertEqual(productDetailData.body?.originalPrice, 149.99)
+            XCTAssertEqual(productDetailData.body?.currencyID, "USD")
+            XCTAssertEqual(productDetailData.body?.saleTerms?.count, 2)
+            XCTAssertEqual(productDetailData.body?.pictures?.count, 1)
+            XCTAssertEqual(productDetailData.body?.attributes?.count, 0)
+        }
+        
+        func testEncodeToJSON() {
+        // Given
+        let productDetailData = ProductDetailData(
+            code: 200,
+            body: Body(
+                id: "123",
+                siteID: "MELI",
+                title: "Product Title",
+                subtitle: "Product Subtitle",
+                sellerID: 456,
+                categoryID: "789",
+                price: 99.99,
+                basePrice: 129.99,
+                originalPrice: 149.99,
+                currencyID: "USD",
+                saleTerms: [
+                    SaleTerm(id: "1", name: "Condition", valueName: "New"),
+                    SaleTerm(id: "2", name: "Warranty", valueName: "1 Year")
+                ],
+                pictures: [
+                    Picture(id: "1", url: "https://example.com/image1.jpg", secureURL: "https://example.com/image1.jpg", size: "100x100", maxSize: "1000x1000", quality: "HD")
+                ],
+                attributes: []
+            )
+        )
+        
+        // When
+        let encoder = JSONEncoder()
+        let jsonData = try! encoder.encode(productDetailData)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        
+        // Then
+        let expectedJSONString = "{\"body\":{\"id\":\"123\",\"sale_terms\":[{\"id\":\"1\",\"name\":\"Condition\",\"value_name\":\"New\"},{\"id\":\"2\",\"name\":\"Warranty\",\"value_name\":\"1 Year\"}],\"subtitle\":\"Product Subtitle\",\"category_id\":\"789\",\"pictures\":[{\"size\":\"100x100\",\"id\":\"1\",\"quality\":\"HD\",\"url\":\"https:\\/\\/example.com\\/image1.jpg\",\"secure_url\":\"https:\\/\\/example.com\\/image1.jpg\",\"max_size\":\"1000x1000\"}],\"price\":99.989999999999995,\"title\":\"Product Title\",\"base_price\":129.99000000000001,\"currency_id\":\"USD\",\"attributes\":[],\"site_id\":\"MELI\",\"seller_id\":456,\"original_price\":149.99000000000001},\"code\":200}"
+        XCTAssertEqual(jsonString, expectedJSONString)
+    }
+    
+    override func tearDown() {
+        viewModel = nil
+        mockDelegate = nil
+        super.tearDown()
+    }
+    
+    func testGetProductDetail_Successful() {
+        // Given
+        let productId = "123"
+        
+        // Crea un objeto de prueba para comparar con el resultado
+        
+        // When
+        viewModel.getProductDetail(productId: productId)
+        
+        // Then
+        // Verifica que el delegado haya sido llamado correctamente con los detalles del producto
+        XCTAssertTrue(!mockDelegate.successGetProductsCalled)
+        XCTAssertFalse(mockDelegate.errorCalled)
+    }
+    
+    func testGetProductDetail_Error() {
+        // Given
+        let productId = "456"
+        let expectedErrorMessage = "Error fetching product details"
+        
+        // When
+        viewModel.getProductDetail(productId: productId)
+        
+        // Then
+        // Verifica que el delegado haya sido llamado correctamente con el mensaje de error
+        XCTAssertFalse(mockDelegate.successGetProductsCalled)
+        XCTAssertTrue(!mockDelegate.errorCalled)
+    }
+}
+```
+- aca un ejemplo de las clases que se les agrego covertura
+
+- Nota: no se hizo [TDD](https://intelequia.com/blog/post/qu%C3%A9-es-y-para-qu%C3%A9-sirve-un-tdd-o-test-driven-development#:~:text=%C2%BFQu%C3%A9%20es%20Test%20Driven%20Development,antes%20de%20escribir%20el%20c%C3%B3digo.) ya que se construyo el codigo primero
+
+![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a&_gl=1*12uzflm*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNDY3NC4wLjAuMA..)
+
+## Depliegue continuo(CD)
 
 - se contemplo utilizar [fastlane](https://fastlane.tools/) pero al final nos fuimos por [bitrise](https://app.bitrise.io/) por que por medio de cajones por debamos nos construye nuestro documento [fastlane](https://fastlane.tools/)
 
-## Depliegue continuo(CD)
 - se contemplo utilizar [fastlane](https://fastlane.tools/) pero al final nos fuimos por [bitrise](https://app.bitrise.io/) por que por medio de cajones por debamos nos construye nuestro documento [fastlane](https://fastlane.tools/)
 
 - empezamos con la configuracion del proyecto seleccion del repo y la rama
@@ -869,17 +1105,15 @@ extension AlerMessageThreeOptionsViewController {
 
 - y cada vez que hagamos un pull request a nuestra rama qa tendremos automáticamente un build con las características de workflow ya construidas
 
+## Video demostrativo Lista De Paises
 
-## Usuario y contraseña de prueba
+[![IMAGE ALT TEXT HERE](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202023-06-05%20at%2023.14.23.png?alt=media&token=47bf94d1-6b9c-46b6-ad40-02a1636c5586&_gl=1*xqqtzd*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNDkxNS4wLjAuMA..)](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Simulator%20Screen%20Recording%20-%20iPhone%2011%20Pro%20Max%20-%202023-06-05%20at%2023.14.19.mp4?alt=media&token=e267c421-1e44-4fed-b2cf-f38af87741ad&_gl=1*pjqk70*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNDk4NC4wLjAuMA..)
 
-- user: test@mail.com
-- password: 12345678
+## Video demostrativo Lista de Productos
+
+[![IMAGE ALT TEXT HERE](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202023-06-05%20at%2023.17.16.png?alt=media&token=2cb00b1d-90f8-4b9a-b075-d0b832d45bbb&_gl=1*1cclkem*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNTE3My4wLjAuMA..)](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Simulator%20Screen%20Recording%20-%20iPhone%2011%20Pro%20Max%20-%202023-06-05%20at%2023.18.29.mp4?alt=media&token=dfb25ba8-b389-4624-8f3b-f4366940a481&_gl=1*15bpe2c*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNTIxNS4wLjAuMA..)
 
 
-## Video demostrativo Lista Productos
+## Video demostrativo Detalle de Productos
 
-[![IMAGE ALT TEXT HERE](https://firebasestorage.googleapis.com/v0/b/testpira-eec30.appspot.com/o/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202023-04-30%20at%2018.48.54.png?alt=media&token=7779974b-fea8-4926-96bd-f3334857109c)](https://firebasestorage.googleapis.com/v0/b/testpira-eec30.appspot.com/o/Simulator%20Screen%20Recording%20-%20iPhone%2011%20Pro%20Max%20-%202023-04-30%20at%2018.49.52.mp4?alt=media&token=4d576a80-e2e9-4d08-90da-cfab9cd59bf6)
-
-## Video demostrativo Detalle Productos
-
-[![IMAGE ALT TEXT HERE](https://firebasestorage.googleapis.com/v0/b/testpira-eec30.appspot.com/o/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202023-04-30%20at%2018.49.01.png?alt=media&token=837f5ef2-b752-4cc9-8ef8-15fcdfcad4c1)](https://firebasestorage.googleapis.com/v0/b/testpira-eec30.appspot.com/o/Simulator%20Screen%20Recording%20-%20iPhone%2011%20Pro%20Max%20-%202023-04-30%20at%2018.50.10.mp4?alt=media&token=ca532236-b43e-4677-bc13-7e911f2f742b)
+[![IMAGE ALT TEXT HERE](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202023-06-05%20at%2023.23.04.png?alt=media&token=990a4383-e334-40a5-8f3d-ad0554b2a3e0&_gl=1*kx02u8*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNTQ3OS4wLjAuMA..)](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Simulator%20Screen%20Recording%20-%20iPhone%2011%20Pro%20Max%20-%202023-06-05%20at%2023.23.40.mp4?alt=media&token=6d6ceae7-5edd-463e-8885-d88241a15bd2&_gl=1*lofovq*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNTUzMC4wLjAuMA..)

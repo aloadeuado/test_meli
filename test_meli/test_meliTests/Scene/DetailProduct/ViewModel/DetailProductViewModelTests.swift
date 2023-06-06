@@ -84,7 +84,6 @@ class DetailProductViewModelTests: XCTestCase {
             // Then
             XCTAssertEqual(productDetailData.code, 200)
             XCTAssertEqual(productDetailData.body?.id, "123")
-            XCTAssertEqual(productDetailData.body?.siteID, "MELI")
             XCTAssertEqual(productDetailData.body?.title, "Product Title")
             XCTAssertEqual(productDetailData.body?.subtitle, "Product Subtitle")
             XCTAssertEqual(productDetailData.body?.sellerID, 456)
@@ -104,7 +103,6 @@ class DetailProductViewModelTests: XCTestCase {
             code: 200,
             body: Body(
                 id: "123",
-                siteID: "MELI",
                 title: "Product Title",
                 subtitle: "Product Subtitle",
                 sellerID: 456,
@@ -130,7 +128,7 @@ class DetailProductViewModelTests: XCTestCase {
         let jsonString = String(data: jsonData, encoding: .utf8)
         
         // Then
-        let expectedJSONString = "{\"body\":{\"id\":\"123\",\"sale_terms\":[{\"id\":\"1\",\"name\":\"Condition\",\"value_name\":\"New\"},{\"id\":\"2\",\"name\":\"Warranty\",\"value_name\":\"1 Year\"}],\"subtitle\":\"Product Subtitle\",\"category_id\":\"789\",\"pictures\":[{\"size\":\"100x100\",\"id\":\"1\",\"quality\":\"HD\",\"url\":\"https:\\/\\/example.com\\/image1.jpg\",\"secure_url\":\"https:\\/\\/example.com\\/image1.jpg\",\"max_size\":\"1000x1000\"}],\"price\":99.989999999999995,\"title\":\"Product Title\",\"base_price\":129.99000000000001,\"currency_id\":\"USD\",\"attributes\":[],\"site_id\":\"MELI\",\"seller_id\":456,\"original_price\":149.99000000000001},\"code\":200}"
+        let expectedJSONString = "{\"body\":{\"id\":\"123\",\"subtitle\":\"Product Subtitle\",\"category_id\":\"789\",\"title\":\"Product Title\",\"price\":99.989999999999995,\"pictures\":[{\"size\":\"100x100\",\"id\":\"1\",\"quality\":\"HD\",\"url\":\"https:\\/\\/example.com\\/image1.jpg\",\"secure_url\":\"https:\\/\\/example.com\\/image1.jpg\",\"max_size\":\"1000x1000\"}],\"base_price\":129.99000000000001,\"attributes\":[],\"currency_id\":\"USD\",\"seller_id\":456,\"original_price\":149.99000000000001,\"sale_terms\":[{\"id\":\"1\",\"name\":\"Condition\",\"value_name\":\"New\"},{\"id\":\"2\",\"name\":\"Warranty\",\"value_name\":\"1 Year\"}]},\"code\":200}"
         XCTAssertEqual(jsonString, expectedJSONString)
     }
     
