@@ -30,12 +30,13 @@ class SelectedContryViewController: UIViewController {
         sitesTableView.register(SelectedContryTableViewCell.nib(), forCellReuseIdentifier: SelectedContryTableViewCell.identificador)
         noDataView.isHidden = true
         selectedContryViewModel = SelectedContryViewModel(selectedContryDelegate: self)
+        if selectedContryViewModel?.getKeepSite() == "Save" {
+            ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
+            return
+        }
         isLoadingSites = true
         selectedContryViewModel?.getCountriesDetail()
         setStateButton()
-        if selectedContryViewModel?.getKeepSite() == "Save" {
-            ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
-        }
     }
     
     func selectedSite(indexPath: IndexPath){

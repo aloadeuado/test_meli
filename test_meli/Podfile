@@ -10,6 +10,7 @@ target 'test_meli' do
   pod 'ABLoaderView', '~> 1.0.2'
   pod 'MaterialComponents/Chips'
   pod 'Toast-Swift', '~> 5.0.1'
+  pod 'ImageScrollView', '~> 1.9.3'
   # Pods for test_meli
 
   target 'test_meliTests' do

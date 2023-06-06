@@ -1,6 +1,7 @@
 PODS:
   - ABLoaderView (1.0.2)
   - Alamofire (5.6.4)
+  - ImageScrollView (1.9.3)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
   - MaterialComponents/Buttons (124.2.0):
@@ -80,6 +81,7 @@ PODS:
 DEPENDENCIES:
   - ABLoaderView (~> 1.0.2)
   - Alamofire (~> 5.2)
+  - ImageScrollView (~> 1.9.3)
   - MaterialComponents/Chips
   - SDWebImage (~> 5.0)
   - Toast-Swift (~> 5.0.1)
@@ -88,6 +90,7 @@ SPEC REPOS:
   trunk:
     - ABLoaderView
     - Alamofire
+    - ImageScrollView
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
@@ -97,12 +100,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ABLoaderView: 389caecbd6f855bfcf3c1c0d80fb14ce4ab9da2c
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  ImageScrollView: d3ce8371e0d44299b2b638410db45387e18aa83f
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a5fd7937c1ab21257a8a3731163f5a540e3a9ce6
+PODFILE CHECKSUM: 66c8546fd11bbe1f6b25a6b6c47728872e3ddd36
 
 COCOAPODS: 1.12.1

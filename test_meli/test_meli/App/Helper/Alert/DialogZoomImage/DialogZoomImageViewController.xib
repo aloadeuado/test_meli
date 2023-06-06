@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogZoomImageViewController" customModule="test_meli" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="zoomImageScrollView" destination="qS2-jn-2CB" id="3cv-qn-Eyv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-tv-tKb">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title=" "/>
+                    <connections>
+                        <action selector="closePressedWithButton:" destination="-1" eventType="touchUpInside" id="d8k-mL-9d8"/>
+                    </connections>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qS2-jn-2CB" customClass="ImageScrollView" customModule="ImageScrollView">
+                    <rect key="frame" x="76" y="362" width="240" height="128"/>
+                    <viewLayoutGuide key="contentLayoutGuide" id="abJ-8R-iTZ"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="Wmb-eE-ted"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrt-wS-D1Y">
+                    <rect key="frame" x="347.66666666666669" y="79" width="35.333333333333314" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="X"/>
+                    <connections>
+                        <action selector="closePressedWithButton:" destination="-1" eventType="touchUpInside" id="DLa-71-9wF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="P1e-tv-tKb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DJ9-uf-9qv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qS2-jn-2CB" secondAttribute="bottom" constant="50" id="Ebu-3W-GGK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qS2-jn-2CB" secondAttribute="trailing" id="Twq-Ws-35H"/>
+                <constraint firstItem="P1e-tv-tKb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UOn-j0-1Q1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rrt-wS-D1Y" secondAttribute="trailing" constant="10" id="ZI3-Qn-tWo"/>
+                <constraint firstItem="qS2-jn-2CB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="aJd-Jb-yan"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="P1e-tv-tKb" secondAttribute="bottom" id="gly-gl-BKc"/>
+                <constraint firstItem="rrt-wS-D1Y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="hY5-UY-1kQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P1e-tv-tKb" secondAttribute="trailing" id="i4p-g1-hBP"/>
+                <constraint firstItem="qS2-jn-2CB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yzG-no-G4f"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

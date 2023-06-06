@@ -93,8 +93,6 @@ class ListProductsViewModel{
                 })
                 listFilter.append(contentsOf: listAvailableFilterValue ?? [])
             }
-            
-            
         })
         
         productData.availableFilters?.forEach { (availableFilter) in
@@ -120,8 +118,6 @@ class ListProductsViewModel{
                     listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: state))
                 }
             }
-            
-            
         }
         
         return listFilter
@@ -184,7 +180,7 @@ class ListProductsViewModel{
                     return
                 }
             }
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
     
@@ -197,7 +193,7 @@ class ListProductsViewModel{
                     return
                 }
             }
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
     
@@ -210,7 +206,7 @@ class ListProductsViewModel{
                     return
                 }
             }
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
 
