@@ -4,6 +4,26 @@ La aplicación es una app de prueba para Meli donde se listan productos a partir
 - Lista de productos
 - Detalle de producto
 
+## Requisitos
+
+Para construir y ejecutar la aplicación, necesitas:
+
+- [X] Swift 5.0+
+- [X] Xcode 10.0+
+- [X] iOS 10.0+
+
+## Instalación
+
+1. Clona este repositorio.
+2. Abre el archivo 'TestMeli.xcodeproj' en Xcode.
+3. Compila y ejecuta la aplicación en tu dispositivo o emulador.
+
+## Uso
+
+1. Al abrir la aplicación, selecciona un país.
+2. Después de seleccionar un país, se mostrará una lista de productos disponibles.
+3. Al seleccionar un producto, se mostrarán los detalles de este.
+
 ## Manejo de git (git flow)
 - Se trabaja con 2 ramas principales: develop y main. Desde develop se desprenden ramas por cada feature del proyecto. 
 
@@ -1075,6 +1095,47 @@ class DetailProductViewModelTests: XCTestCase {
     }
 }
 ```
+
+## ListProductsViewModel.swift
+
+Este archivo define la clase `ListProductsViewModel` y el protocolo `ListProductsViewModelDelegate`. 
+
+### ListProductsViewModel
+
+`ListProductsViewModel` se encarga de manipular y gestionar la lógica de negocio relacionada con los productos en la aplicación. Proporciona métodos para manejar y modificar las propiedades de los productos, como categorías, filtros, y ordenaciones, entre otros.
+
+### Métodos principales
+
+1. **setCatogoryProduct**: Este método se encarga de asignar una categoría a un producto. Si la categoría no existe en el producto, la crea.
+
+2. **getListTextSortInternal**: Este método se encarga de obtener la lista de nombres de ordenación disponibles para un producto.
+
+3. **setInitOffsetAndLimit**: Este método inicializa los valores de offset y límite en la paginación del producto.
+
+4. **setSortValue**: Este método se encarga de asignar el valor de ordenación a un producto basándose en el nombre de la ordenación.
+
+5. **getFiltersAvaible**: Este método devuelve la lista de filtros disponibles para un producto.
+
+6. **setNewFilters**: Este método asigna nuevos filtros a un producto.
+
+7. **addItems**: Este método se encarga de añadir elementos a un producto.
+
+8. **getCategoriesOfSites**: Este método obtiene las categorías de un sitio determinado por su identificador.
+
+9. **getProducts**: Este método tiene dos variantes, una que obtiene productos basándose en los datos del producto y otra que los obtiene basándose en un texto de búsqueda.
+
+10. **geInternalSite**: Este método obtiene el sitio interno.
+
+11. **getKeepSite**: Este método obtiene el valor de la clave "keyKeepSite".
+
+### ListProductsViewModelDelegate
+
+El protocolo `ListProductsViewModelDelegate` define los métodos de delegado que permiten a las clases que implementan este protocolo responder a ciertos eventos del modelo de vista.
+
+### Manejo de casos de error
+
+En este código, el manejo de errores se realiza principalmente mediante la devolución de llamada `listProductsViewModel(onError error: String)`. En los métodos que realizan llamadas de red o interactúan con la base de datos, cualquier error que se encuentre se devuelve a través de este delegado. En cada uno de estos métodos, se verifica el éxito de la operación y, en caso de error, se devuelve el mensaje de error correspondiente.
+
 ## Ejemplo de clases con cobertura
 
 A continuación se muestra un ejemplo de las clases a las que se les ha agregado cobertura:
