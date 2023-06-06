@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  test_meli
+
+  Created by Pedro Alonso Daza B on 2/06/23.
+  
+*/
+"Name: " = "Name: ";
+"No data" = "No data";
+"Keep my decision." = "Keep my decision.";
+"Keep asking." = "Keep asking.";
+"Cancel." = "Cancel.";
+"You have already selected a site. What do you want to do with this decision?" = "You have already selected a site. What do you want to do with this decision?";
+"Terms of sale" = "Terms of sale";
+"Product attributes" = "Product attributes";
