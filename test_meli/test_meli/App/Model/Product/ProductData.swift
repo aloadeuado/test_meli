@@ -7,7 +7,6 @@ import Foundation
 
 // MARK: - ProductData
 class ProductData: Codable {
-    var siteID: SiteID?
     var countryDefaultTimeZone: String?
     var paging: Paging?
     var results: [Result]?
@@ -17,7 +16,6 @@ class ProductData: Codable {
     var availableFilters: [AvailableFilter]?
 
     enum CodingKeys: String, CodingKey {
-        case siteID = "site_id"
         case countryDefaultTimeZone = "country_default_time_zone"
         case paging, results, sort
         case availableSorts = "available_sorts"
@@ -26,7 +24,6 @@ class ProductData: Codable {
     }
     
     init() {
-        self.siteID = nil
         self.countryDefaultTimeZone = nil
         self.paging = nil
         self.results = nil

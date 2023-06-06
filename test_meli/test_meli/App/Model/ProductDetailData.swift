@@ -15,7 +15,7 @@ struct ProductDetailData: Codable {
 
 // MARK: - Body
 struct Body: Codable {
-    let id, siteID, title: String?
+    let id, title: String?
     let subtitle: String?
     let sellerID: Int?
     let categoryID: String?
@@ -28,7 +28,6 @@ struct Body: Codable {
 
     enum CodingKeys: String, CodingKey {
         case id
-        case siteID = "site_id"
         case title, subtitle
         case sellerID = "seller_id"
         case categoryID = "category_id"

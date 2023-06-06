@@ -18,7 +18,6 @@
 		78248CD62A2CF73800F357E9 /* Sales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CA82A2CF72A00F357E9 /* Sales.swift */; };
 		78248CD72A2CF73800F357E9 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CA92A2CF72B00F357E9 /* Sort.swift */; };
 		78248CD82A2CF73800F357E9 /* StateID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CAA2A2CF72B00F357E9 /* StateID.swift */; };
-		78248CD92A2CF73800F357E9 /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CAB2A2CF72B00F357E9 /* Seller.swift */; };
 		78248CDA2A2CF73800F357E9 /* SiteID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CAC2A2CF72B00F357E9 /* SiteID.swift */; };
 		78248CDB2A2CF73800F357E9 /* DifferentialPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CAD2A2CF72C00F357E9 /* DifferentialPricing.swift */; };
 		78248CDC2A2CF73800F357E9 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CAE2A2CF72C00F357E9 /* Metrics.swift */; };
@@ -43,7 +42,6 @@
 		78248CEF2A2CF73800F357E9 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC12A2CF73100F357E9 /* Struct.swift */; };
 		78248CF02A2CF73800F357E9 /* TransactionsPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC22A2CF73100F357E9 /* TransactionsPeriod.swift */; };
 		78248CF12A2CF73800F357E9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC32A2CF73200F357E9 /* Address.swift */; };
-		78248CF22A2CF73800F357E9 /* Eshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC42A2CF73200F357E9 /* Eshop.swift */; };
 		78248CF32A2CF73800F357E9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC52A2CF73200F357E9 /* Result.swift */; };
 		78248CF42A2CF73800F357E9 /* FilterValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC62A2CF73300F357E9 /* FilterValue.swift */; };
 		78248CF52A2CF73800F357E9 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78248CC72A2CF73400F357E9 /* Condition.swift */; };
@@ -168,7 +166,6 @@
 		78248CA82A2CF72A00F357E9 /* Sales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sales.swift; sourceTree = "<group>"; };
 		78248CA92A2CF72B00F357E9 /* Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		78248CAA2A2CF72B00F357E9 /* StateID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateID.swift; sourceTree = "<group>"; };
-		78248CAB2A2CF72B00F357E9 /* Seller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
 		78248CAC2A2CF72B00F357E9 /* SiteID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteID.swift; sourceTree = "<group>"; };
 		78248CAD2A2CF72C00F357E9 /* DifferentialPricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentialPricing.swift; sourceTree = "<group>"; };
 		78248CAE2A2CF72C00F357E9 /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
@@ -193,7 +190,6 @@
 		78248CC12A2CF73100F357E9 /* Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		78248CC22A2CF73100F357E9 /* TransactionsPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPeriod.swift; sourceTree = "<group>"; };
 		78248CC32A2CF73200F357E9 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		78248CC42A2CF73200F357E9 /* Eshop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eshop.swift; sourceTree = "<group>"; };
 		78248CC52A2CF73200F357E9 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		78248CC62A2CF73300F357E9 /* FilterValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterValue.swift; sourceTree = "<group>"; };
 		78248CC72A2CF73400F357E9 /* Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
@@ -369,7 +365,6 @@
 				78248CC72A2CF73400F357E9 /* Condition.swift */,
 				78248CBB2A2CF72F00F357E9 /* CurrencyID.swift */,
 				78248CAD2A2CF72C00F357E9 /* DifferentialPricing.swift */,
-				78248CC42A2CF73200F357E9 /* Eshop.swift */,
 				78248CB82A2CF72F00F357E9 /* Filter.swift */,
 				78248CC62A2CF73300F357E9 /* FilterValue.swift */,
 				78248CA52A2CF72A00F357E9 /* Installments.swift */,
@@ -386,7 +381,6 @@
 				78248CC52A2CF73200F357E9 /* Result.swift */,
 				78248CD12A2CF73800F357E9 /* ResultTag.swift */,
 				78248CA82A2CF72A00F357E9 /* Sales.swift */,
-				78248CAB2A2CF72B00F357E9 /* Seller.swift */,
 				78248CCC2A2CF73600F357E9 /* SellerAddress.swift */,
 				78248CB32A2CF72D00F357E9 /* SellerReputation.swift */,
 				78248CB92A2CF72F00F357E9 /* SellerTag.swift */,
@@ -1189,7 +1183,6 @@
 				959B98312A29C8A100CA313B /* UserDefault.swift in Sources */,
 				78248CEA2A2CF73800F357E9 /* Shipping.swift in Sources */,
 				78248CD22A2CF73800F357E9 /* AvailableFilterValue.swift in Sources */,
-				78248CD92A2CF73800F357E9 /* Seller.swift in Sources */,
 				78248CD52A2CF73800F357E9 /* Transactions.swift in Sources */,
 				959B981E2A29BD3B00CA313B /* CustomEnabledButton.swift in Sources */,
 				78248CFD2A2CF73800F357E9 /* LevelID.swift in Sources */,
@@ -1229,7 +1222,6 @@
 				959B985F2A2BE36100CA313B /* CategoryData.swift in Sources */,
 				78248C8D2A2CB91A00F357E9 /* CatagoriesRepository.swift in Sources */,
 				78248CEF2A2CF73800F357E9 /* Struct.swift in Sources */,
-				78248CF22A2CF73800F357E9 /* Eshop.swift in Sources */,
 				959B98332A2ADACD00CA313B /* CountryFlagData.swift in Sources */,
 				78248CF62A2CF73800F357E9 /* AttributeValue.swift in Sources */,
 				78248CEB2A2CF73800F357E9 /* StateName.swift in Sources */,
