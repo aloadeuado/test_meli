@@ -180,7 +180,7 @@ class ListProductsViewModel{
                     return
                 }
             }
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
     
@@ -193,7 +193,7 @@ class ListProductsViewModel{
                     return
                 }
             }
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
     
@@ -206,7 +206,7 @@ class ListProductsViewModel{
                     return
                 }
             }
-            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "")
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
 

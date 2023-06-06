@@ -56,3 +56,7 @@ func getProductsRouter(countryId: String, productData: ProductData) -> String {
     
     return url
 }
+
+func getProductDetailRoute(productId: String) -> String {
+    return getStringOfInfo(key: "API_BASE_URL") + "/items?ids=\(productId)"
+}

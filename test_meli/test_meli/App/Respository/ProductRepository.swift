@@ -35,4 +35,19 @@ struct ProductRepository {
         }
 
     }
+    
+    static func getProductDetail(productId: String, complete: @escaping ((Bool, [ProductDetailData]?, String?) -> Void )){
+        let url = getProductDetailRoute(productId: productId)
+
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: [ProductDetailData].self) { success, productDetailData, err in
+            DispatchQueue.main.async {
+                if success {
+                    complete(true, productDetailData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
+            }
+        }
+
+    }
 }
