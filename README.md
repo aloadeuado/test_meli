@@ -1,42 +1,41 @@
 # Test Meli
-La aplicaicon es un test app para meli donde se listan productos a partir de un pais seleccionado y ver detalles interesantes del producto. se compone de tres pantallas
-- seleccion de pais
-- lista de productos
-- detalle de producto
-
+La aplicación es una app de prueba para Meli donde se listan productos a partir de un país seleccionado y se pueden ver detalles interesantes del producto. Se compone de tres pantallas:
+- Selección de país
+- Lista de productos
+- Detalle de producto
 
 ## Manejo de git (git flow)
-- se trabaja con 2 ramas principales develop y main desde develop se desprenden ramas por cada feature del proyecto 
+- Se trabaja con 2 ramas principales: develop y main. Desde develop se desprenden ramas por cada feature del proyecto. 
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.42.51%20p.m..png?alt=media&token=58107ee8-e360-4c99-b60b-84927b62069e&_gl=1*qgfynw*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAxOTQyNi4wLjAuMA..)
 
-- tambien se emula el merge de ramas por medio de pull request
-- example
+- También se emula el merge de ramas mediante pull request.
+- Ejemplo
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%207.03.24%20p.m..png?alt=media&token=385d0660-9246-4790-b746-a0de2acad262&_gl=1*1wfjmtf*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAyMDEzNS4wLjAuMA..)
 
-## Manejo de hambientes
+## Manejo de ambientes
 
-- se crea flujo especificos para 3 posibles mabientes dev, qa, prd y asi mismo se crean los schems 
+- Se crean flujos específicos para 3 posibles ambientes: dev, qa, prd. Asimismo, se crean los esquemas (schemes). 
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.33.36%20p.m..png?alt=media&token=5e18d8be-3b40-448c-a2cf-2eda67713a08&_gl=1*yvhw83*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAxODk5MS4wLjAuMA..)
 
-- con [.xconfig](https://nshipster.com/xcconfig/) especifico por hambiente 
+- Con [.xcconfig](https://nshipster.com/xcconfig/) específico por ambiente. 
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.39.17%20p.m..png?alt=media&token=6943b35a-aba6-42d0-9203-9c0d9dcef6e3&_gl=1*okye7w*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAxOTE4Mi4wLjAuMA..)
 
-- adcional es posible que las aplicaicones convivan en el mismo dispositivo por hambiente 
+- Adicionalmente, es posible que las aplicaciones convivan en el mismo dispositivo por ambiente. 
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.09.35%20p.m..png?alt=media&token=ef3d95b9-e21d-4c03-a82d-30f8c7305231&_gl=1*hzeiba*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAxOTkyNC4wLjAuMA..)
 
-- esto es posible por el cambio por xcofig de cada scheme
+- Esto es posible gracias al cambio por xconfig de cada scheme.
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.53.34%20p.m..png?alt=media&token=8ea0e1e8-0daa-4d58-998d-e10569c26903&_gl=1*1a3jgil*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAyMDAzNi4wLjAuMA..)
 
 
 ## Installation
 
-Use cocoa pods [cocoapods](https://cocoapods.org/) he instala los pods de dependencias .
+Use CocoaPods [cocoapods](https://cocoapods.org/) e instala las dependencias.
 
 ```bash
 pod install
@@ -70,14 +69,16 @@ target 'test_meli' do
 end
 
 ```
-- nota: contempla el uso de algunos pods
-- SDWebImage: descargar imagenes y menejo de cache para su reconsumo posteriormente.
-- ABLoaderView: para la evidencia de fragmento de desgradado mientras trae los datos o responde en EndPoint seleccionado.
-- ImageScrollView: hacer zoom a las imagenes cargadas y verlas a detalle
+- Nota: contempla el uso de algunos pods:
+- SDWebImage: descargar imágenes y manejo de caché para su reconsumo posteriormente.
+- ABLoaderView: para la visualización de un fragmento de degradado mientras trae los datos o responde en el EndPoint seleccionado.
+- ImageScrollView: permite hacer zoom a las imágenes cargadas y verlas en detalle.
 
 
 ## Arquitectura usada
-- mvvm: la idea es la implementación de [POP](https://medium.com/globallogic-latinoamerica-mobile/la-programaci%C3%B3n-orientada-a-protocolos-en-swift-3548ed2dc2f1) conjunto con un viewModel con los protocolos
+
+- MVVM: La idea es la implementación de [POP](https://medium.com/globallogic-latinoamerica-mobile/la-programaci%C3%B3n-orientada-a-protocolos-en-swift-3548ed2dc2f1) en conjunto con un ViewModel que utiliza protocolos.
+
 ```swift
 protocol ListProductsViewModelDelegate: AnyObject {
     func listProductsViewModel(succesGetCategories categories: [CategoryData])
@@ -87,7 +88,7 @@ protocol ListProductsViewModelDelegate: AnyObject {
 }
 
 ```
-- y por medio de binding se entregar los resuelto en los servicios para las vistas
+- Además, mediante el uso de binding, se entregan los datos resueltos en los servicios a las vistas correspondientes.
 
 ```swift
 //MARK: -ListProductsViewModel
@@ -141,8 +142,9 @@ extension ListProductsViewController: ListProductsViewModelDelegate {
 }
 
 ```
-- se agrego una arquitectura repository para el manejo de storage
-- una clase de trato de data dependiendo de la necesidad del negocio
+- Se agregó una arquitectura de repositorio para el manejo del almacenamiento.
+- Se incluyó una clase para el tratamiento de datos dependiendo de las necesidades del negocio.
+
 ```swift
 import Foundation
 import UIKit
@@ -216,7 +218,8 @@ class ApiServices {
 
 ```
 
-- y una etapa de encapsulamiento mas dedicada al negocio
+- Se ha añadido una capa adicional de encapsulamiento más enfocada en la lógica de negocio.
+
 ```swift
 import Foundation
 struct ProductRepository {
@@ -266,7 +269,8 @@ struct ProductRepository {
 }
 
 ```
-- y por medio del viewModel nos comunicamos con las vista.
+
+- A través del ViewModel, nos comunicamos con las vistas para la interacción y presentación de datos.
 
 ```swift
 import Foundation
@@ -500,7 +504,8 @@ protocol ListProductsViewModelDelegate: AnyObject {
 
 ```
 ## Manejo de Generics
-- se tomo la decicion de junto con el JSONDECODE manejar Generics para la deserializacion de informacion
+
+- Se ha tomado la decisión de utilizar Generics junto con JSONDecode para la deserialización de la información.
 
 ```swift
 func requestHttpwithUrl<T : Codable>(EpUrl: String, method: ApiServices.Method, withData parameters: [String:Any], modelType:T.Type, completionHandler: @escaping (Bool, T?, Error?) -> Void) {
@@ -584,9 +589,9 @@ func requestHttpwithUrl<T : Codable>(EpUrl: String, method: ApiServices.Method, 
     }
 ```
 
-## Desacople de resposabilidades en pantalla
+## Desacople de responsabilidades en pantalla
 
-- teniendo en cuenta herramientas como [SOLID](https://profile.es/blog/principios-solid-desarrollo-software-calidad/) creamos una clase llamada CustomShowView con el fin de acoplar los controles al owner de view xib
+- Siguiendo los principios [SOLID](https://profile.es/blog/principios-solid-desarrollo-software-calidad/) (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion), hemos creado una clase llamada CustomShowView. Esta clase tiene como objetivo acoplar los controles al propietario (owner) de la vista XIB, logrando así un desacople de responsabilidades en la pantalla.
 
 ```swift
 import Foundation
@@ -649,7 +654,7 @@ class CustomShowView: CustomView {
 
 ```
 
-- esto permite que al ser heredado y sobreescribir la variable nameXIB con el nombre del XIB tome como un objecto reconsumible en los controllers
+- Esto permite que al heredar la clase y sobrescribir la variable `nameXIB` con el nombre del XIB correspondiente, se pueda utilizar como un objeto reutilizable en los controladores, logrando así una mayor flexibilidad en la gestión de las vistas.
 
 ```swift
 import UIKit
@@ -733,13 +738,13 @@ extension CarouselImageView: UIScrollViewDelegate {
 
 ```
 
-- asi consumir en controles propios dentro de las escenas o UIViewControllers 
+- Esto permite consumirlo en controles propios dentro de las escenas o UIViewControllers.
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Screenshot%20at%20Jun%2005%2022-33-21.png?alt=media&token=69599192-a9e9-4f59-b6b5-3c42e85b0e5f&_gl=1*173p8s3*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyMjQyMS4wLjAuMA..)
 
-## Uso de popOvers resultilisables
+## Uso de popOvers reutilizables
 
-- en inicio se usan UIViewControllers con xib para desacoplar experiencias y bajar la cohecion de condigo 
+- En el inicio, se utilizan UIViewControllers con XIB para desacoplar experiencias y reducir la cohesión del código.
 
 ```swift
 import UIKit
@@ -797,7 +802,7 @@ extension AlerMessageThreeOptionsViewController {
 
 ```
 
-- y todo se contecta con una funcion llamada show donde recibe todo lo necesario para detonarlo y devolver la descicion de el usuario por medio de closure
+- Y todo se conecta a través de una función llamada `show`, que recibe todos los elementos necesarios para activarlo y devuelve la decisión del usuario mediante un closure.
 
 ```swift
 // MARK: - Show Alert
@@ -820,7 +825,7 @@ extension AlerMessageThreeOptionsViewController {
 
 ```
 
-- ejemplo de detonamiento 
+- Ejemplo de detonación.
 
 ```swift
 @IBAction func continuePressed(button: UIButton) {
@@ -840,10 +845,9 @@ extension AlerMessageThreeOptionsViewController {
     }
 
 ```
-## Test Unit
+## Test Unitarios
 
-- nos limitamos a hacer covertura en los unit test en los
-- viewController
+Se ha realizado cobertura de pruebas en los tests unitarios de los ViewControllers.
 
 ```swift
 //
@@ -903,7 +907,7 @@ class MockDetailProductViewModel: DetailProductViewModel {
 
 ```
 
-- tambien en los viewModel esto con el fin de evaluar algo de los flujos de negocio
+- También se han realizado pruebas de cobertura en los ViewModels con el fin de evaluar los flujos de negocio y garantizar su correcto funcionamiento.
 
 ```swift
 import XCTest
@@ -1071,9 +1075,13 @@ class DetailProductViewModelTests: XCTestCase {
     }
 }
 ```
-- aca un ejemplo de las clases que se les agrego covertura
+## Ejemplo de clases con cobertura
 
-- Nota: no se hizo [TDD](https://intelequia.com/blog/post/qu%C3%A9-es-y-para-qu%C3%A9-sirve-un-tdd-o-test-driven-development#:~:text=%C2%BFQu%C3%A9%20es%20Test%20Driven%20Development,antes%20de%20escribir%20el%20c%C3%B3digo.) ya que se construyo el codigo primero
+A continuación se muestra un ejemplo de las clases a las que se les ha agregado cobertura:
+
+![Ejemplo de clases con cobertura](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a)
+
+Nota: No se utilizó Test-Driven Development (TDD) en este proyecto, ya que se construyó el código primero.
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a&_gl=1*12uzflm*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNDY3NC4wLjAuMA..)
 
