@@ -35,6 +35,19 @@ struct ContryRepository {
         }
     }
     
+    static func getDetailCountry(name: String, complete: @escaping ((Bool, [CountryFlagData]?, String?) -> Void )) {
+        let url = getDetailCountryOfNameRoute(name: name)
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: [CountryFlagData].self) { success, countryData, err in
+            DispatchQueue.main.async {
+                if success {
+                    complete(true, countryData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
+            }
+        }
+    }
+    
     static func setInternalSite(countryData: CountryData) {
         
         if let encoded = try? JSONEncoder().encode(countryData) {

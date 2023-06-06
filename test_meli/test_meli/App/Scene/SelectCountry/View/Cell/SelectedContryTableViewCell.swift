@@ -30,10 +30,19 @@ class SelectedContryTableViewCell: UITableViewCell {
         self.countryData = countryData
         titleLabel.text = "Name: ".localized + (countryData.name ?? "")
         stateSwicth.isOn = countryData.state
-        regionLabel.text = region
-        if let url = URL(string: flagUrl) {
-            flagImageView.sd_setImage(with: url)
+        
+        ContryRepository.getDetailCountry(name: (countryData.name ?? "").lowercased()) { [weak self] success, countryFlagData, err in
+            guard let self = self else {return}
+            if success {
+                if let countryFlagData = countryFlagData, !countryFlagData.isEmpty {
+                    if let url = URL(string: countryFlagData[0].flags?.png ?? "") {
+                        self.flagImageView.sd_setImage(with: url)
+                    }
+                    self.regionLabel.text = countryFlagData[0].region ?? ""
+                }
+            }
         }
+        
     }
     
     func showSpinner() {

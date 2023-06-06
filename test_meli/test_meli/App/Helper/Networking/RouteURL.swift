@@ -27,6 +27,10 @@ func getDetailCountriesRoute() -> String {
     return getStringOfInfo(key: "API_BASE_URL_DETAIL") + "v3.1/all"
 }
 
+func getDetailCountryOfNameRoute(name: String) -> String {
+    return getStringOfInfo(key: "API_BASE_URL_DETAIL") + "v3.1/name/\(name.lowercased())"
+}
+
 func getCategoriesOfCountry(countryId: String) -> String {
     return getStringOfInfo(key: "API_BASE_URL") + "/sites/\(countryId)/categories"
 }

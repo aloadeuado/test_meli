@@ -34,7 +34,7 @@ class SelectedContryViewController: UIViewController {
             ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
         }
         isLoadingSites = true
-        selectedContryViewModel?.getCountriesDetail()
+        //selectedContryViewModel?.getCountriesDetail()
         selectedContryViewModel?.getCountries()
         setStateButton()
     }
