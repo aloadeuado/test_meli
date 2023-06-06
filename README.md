@@ -735,6 +735,12 @@ extension CarouselImageView: UIScrollViewDelegate {
 
 - asi consumir en controles propios dentro de las escenas o UIViewControllers 
 
+![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Screenshot%20at%20Jun%2005%2022-33-21.png?alt=media&token=69599192-a9e9-4f59-b6b5-3c42e85b0e5f&_gl=1*173p8s3*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyMjQyMS4wLjAuMA..)
+
+## Uso de popOvers resultilisables
+
+- en inicio se usan UIViewControllers con xib para desacoplar experiencias y bajar la cohecion de condigo 
+
 ```swift
 import UIKit
 
@@ -814,12 +820,26 @@ extension AlerMessageThreeOptionsViewController {
 
 ```
 
+- ejemplo de detonamiento 
 
-![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Screenshot%20at%20Jun%2005%2022-33-21.png?alt=media&token=69599192-a9e9-4f59-b6b5-3c42e85b0e5f&_gl=1*173p8s3*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyMjQyMS4wLjAuMA..)
+```swift
+@IBAction func continuePressed(button: UIButton) {
+        if let siteModel1 = countryData{
+            AlerMessageThreeOptionsViewController.show(controller: self, textMessagge: "You have already selected a site. What do you want to do with this decision?".localized) {
+                self.selectedContryViewModel?.setKeepSite()
+                self.selectedContryViewModel?.setInternalSite(countryData: siteModel1)
+                ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
+            } option2: {
+                self.selectedContryViewModel?.setInternalSite(countryData: siteModel1)
+                ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
+            } option3: {
+                
+            }
+        }
+        
+    }
 
-## Uso de popOvers resultilisables
-
-- en inicio se usan UIViewControllers con xib para desacoplar experiencias y bajar la cohecion de condigo 
+```
 
 
 - se contemplo utilizar [fastlane](https://fastlane.tools/) pero al final nos fuimos por [bitrise](https://app.bitrise.io/) por que por medio de cajones por debamos nos construye nuestro documento [fastlane](https://fastlane.tools/)
