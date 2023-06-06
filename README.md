@@ -584,6 +584,246 @@ func requestHttpwithUrl<T : Codable>(EpUrl: String, method: ApiServices.Method, 
     }
 ```
 
+## Desacople de resposabilidades en pantalla
+
+- teniendo en cuenta herramientas como [SOLID](https://profile.es/blog/principios-solid-desarrollo-software-calidad/) creamos una clase llamada CustomShowView con el fin de acoplar los controles al owner de view xib
+
+```swift
+import Foundation
+import UIKit
+
+class CustomShowView: CustomView {
+
+    var isCallInitComponents = false
+    var nameXIB: String {""}
+
+    @IBOutlet weak var contentView: UIView!
+        
+    var isFirstCall = false
+    
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        //viewSetup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        viewSetup()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        viewSetup()
+    }
+    
+    private func loadViewFromNib() -> UIView? {
+
+         let nibName = nameXIB
+         let bundle = Bundle(for: type(of: self))
+         let nib = UINib(nibName: nibName, bundle: bundle)
+         return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+
+    private func viewSetup() {
+        
+        guard let view = loadViewFromNib() else { return }
+        view.frame = self.bounds
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        if !isFirstCall {
+            self.addSubview(view)
+            isFirstCall = true
+        }
+        
+        contentView = view
+        initComponents()
+    }
+    
+    func initComponents(){
+
+        
+        
+    }
+
+}
+
+```
+
+- esto permite que al ser heredado y sobreescribir la variable nameXIB con el nombre del XIB tome como un objecto reconsumible en los controllers
+
+```swift
+import UIKit
+protocol CarouselImageViewDelegate: AnyObject {
+    func carouselImageViewDelegate(selectIndex index: Int, urlImage: String)
+}
+class CarouselImageView: CustomShowView {
+
+    override var nameXIB: String { "CarouselImageView" }
+    @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var countLabel: CustomLabel!
+    
+    private var listUrlsImage = [String]()
+    var delegate: CarouselImageViewDelegate?
+    var controller: UIViewController?
+    
+    func setData(controller: UIViewController, listUrlsImage: [String]) {
+        self.controller = controller
+        self.listUrlsImage = listUrlsImage
+        countLabel.text = "    \(1) / \(listUrlsImage.count)    "
+        photoCollectionView.reloadData()
+    }
+
+    override func initComponents() {
+        super.initComponents()
+        photoCollectionView.register(CarouselImageCollectionViewCell.nib(), forCellWithReuseIdentifier: CarouselImageCollectionViewCell.identificador)
+    }
+}
+//MARK: -UICollectionViewDataSource
+extension CarouselImageView: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.listUrlsImage.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselImageCollectionViewCell.identificador, for: indexPath) as? CarouselImageCollectionViewCell{
+            
+            cell.setData(urlImage: listUrlsImage[indexPath.row])
+            
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    
+}
+//MARK: -UICollectionViewDelegate
+extension CarouselImageView: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.carouselImageViewDelegate(selectIndex: indexPath.row, urlImage: listUrlsImage[indexPath.row])
+    }
+    
+}
+
+//MARK: -UICollectionViewDelegateFlowLayout
+extension CarouselImageView: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: self.frame.width - 10, height: self.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+}
+//MARK: -UIScrollViewDelegate
+extension CarouselImageView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageWidth = scrollView.frame.size.width
+        let page = Int(round(scrollView.contentOffset.x / pageWidth))
+        print("Estás en la página \(page)")
+        countLabel.text = "    \(page + 1) / \(listUrlsImage.count)    "
+    }
+}
+
+```
+
+- asi consumir en controles propios dentro de las escenas o UIViewControllers 
+
+```swift
+import UIKit
+
+class AlerMessageThreeOptionsViewController: UIViewController {
+
+    @IBOutlet weak var messaggeLabel: UILabel!
+    @IBOutlet weak var option1Button: CustomButton!
+    @IBOutlet weak var option2Button: CustomButton!
+    @IBOutlet weak var option3Button: CustomButton!
+    
+    var textMessagge = ""
+    var textOption1 = ""
+    var textOption2 = ""
+    var textOption3 = ""
+    
+    var option1: (() -> Void)?
+    var option2: (() -> Void)?
+    var option3: (() -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initComponent()
+        // Do any additional setup after loading the view.
+    }
+    
+    func initComponent(){
+        messaggeLabel.text = textMessagge
+        option1Button.setTitle(textOption1, for: .normal)
+        option2Button.setTitle(textOption2, for: .normal)
+        option3Button.setTitle(textOption3, for: .normal)
+    }
+
+}
+//MARK: -Actions
+extension AlerMessageThreeOptionsViewController {
+    @IBAction func option1Pressed(button: CustomButton) {
+        dismiss(animated: true) {
+            self.option1?()
+        }
+    }
+    
+    @IBAction func option2Pressed(button: CustomButton) {
+        dismiss(animated: true) {
+            self.option2?()
+        }
+    }
+    
+    @IBAction func option3Pressed(button: CustomButton) {
+        dismiss(animated: true) {
+            self.option3?()
+        }
+    }
+}
+
+```
+
+- y todo se contecta con una funcion llamada show donde recibe todo lo necesario para detonarlo y devolver la descicion de el usuario por medio de closure
+
+```swift
+// MARK: - Show Alert
+extension AlerMessageThreeOptionsViewController {
+    
+    static func show(controller: UIViewController, textMessagge: String, textOption1: String = "Keep my decision.".localized, textOption2: String = "Keep asking.".localized, textOption3: String = "Cancel.".localized, option1: (() -> Void)? = nil, option2: (() -> Void)? = nil, option3: (() -> Void)? = nil) {
+        let alert = AlerMessageThreeOptionsViewController(nibName: "AlerMessageThreeOptionsViewController", bundle: nil)
+        alert.modalPresentationStyle = .overFullScreen
+        alert.modalTransitionStyle = .crossDissolve
+        alert.textMessagge = textMessagge
+        alert.textOption1 = textOption1
+        alert.textOption2 = textOption2
+        alert.textOption3 = textOption3
+        alert.option1 = option1
+        alert.option2 = option2
+        alert.option3 = option3
+        controller.present(alert, animated: true, completion: nil)
+    }
+}
+
+```
+
+
+![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Screenshot%20at%20Jun%2005%2022-33-21.png?alt=media&token=69599192-a9e9-4f59-b6b5-3c42e85b0e5f&_gl=1*173p8s3*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyMjQyMS4wLjAuMA..)
+
+## Uso de popOvers resultilisables
+
+- en inicio se usan UIViewControllers con xib para desacoplar experiencias y bajar la cohecion de condigo 
+
+
+- se contemplo utilizar [fastlane](https://fastlane.tools/) pero al final nos fuimos por [bitrise](https://app.bitrise.io/) por que por medio de cajones por debamos nos construye nuestro documento [fastlane](https://fastlane.tools/)
+
 ## Depliegue continuo(CD)
 - se contemplo utilizar [fastlane](https://fastlane.tools/) pero al final nos fuimos por [bitrise](https://app.bitrise.io/) por que por medio de cajones por debamos nos construye nuestro documento [fastlane](https://fastlane.tools/)
 
