@@ -29,18 +29,10 @@ La aplicaicon es un test app para meli donde se listan productos a partir de un 
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.09.35%20p.m..png?alt=media&token=ef3d95b9-e21d-4c03-a82d-30f8c7305231&_gl=1*hzeiba*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAxOTkyNC4wLjAuMA..)
 
-- esto es posible por el cambio por xcofig de cada schem
+- esto es posible por el cambio por xcofig de cada scheme
 
 ![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%209.53.34%20p.m..png?alt=media&token=8ea0e1e8-0daa-4d58-998d-e10569c26903&_gl=1*1a3jgil*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAxODg1NS44LjEuMTY4NjAyMDAzNi4wLjAuMA..)
 
-## Manejo de local storage
-- Contemplando la posibilidad de utilizar manejo de almacenamiento interno como userDefaults ketChain o incluso coreData se decidio irse por el lado de UserDEfault por si flesibilidad con #DB NOSQL
-- esto se puede apreciar en todo el flujo de agregar o quitar como favorito un item
-
-## Manejo de git (git flow)
-- en principio se p[enso en hacer una rama de despliegue para dev, qa, prd pero vieno la agilidad de prueba solo se dejo develop para dev y main para prd y qa con el que se levanta ramas feature por cada avance 
-la parte de hotfix y integracion queda en la capa de revision pero al final si se hace la liberacion desde develop a prd(main)
-![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testpira-eec30.appspot.com/o/Captura%20de%20pantalla%202023-04-30%20a%20la(s)%206.38.54%20p.m..png?alt=media&token=07ac6bed-7a04-4447-bc7e-a374b2c07f55)
 
 ## Installation
 
@@ -56,132 +48,96 @@ pod install
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'test_yape_ios' do
+target 'test_meli' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  
-  pod 'GoogleSignIn', '~> 6.2.4'
-  pod 'Toast-Swift', '~> 5.0.1'
-  pod 'SDWebImage', '~> 5.13.2'
-  pod 'SkeletonView', '~> 1.30.4'
 
-  target 'test_yape_iosTests' do
+  pod 'SDWebImage', '~> 5.0'
+  pod 'ABLoaderView', '~> 1.0.2'
+  pod 'Toast-Swift', '~> 5.0.1'
+  pod 'ImageScrollView', '~> 1.9.3'
+  # Pods for test_meli
+
+  target 'test_meliTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'test_yape_iosUITests' do
+  target 'test_meliUITests' do
     # Pods for testing
   end
 
 end
+
 ```
-
+- nota: contempla el uso de algunos pods
 - SDWebImage: descargar imagenes y menejo de cache para su reconsumo posteriormente.
-- SkeletonView: para la evidencia de fragmento de desgradado mientras trae los datos o responde en EndPoint seleccionado.
+- ABLoaderView: para la evidencia de fragmento de desgradado mientras trae los datos o responde en EndPoint seleccionado.
+- ImageScrollView: hacer zoom a las imagenes cargadas y verlas a detalle
 
-- nota: al terminar de agregar los pods selecciona del los schemas el de testSpira_dev o testSpira como en la imagen
-![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testpira-eec30.appspot.com/o/Captura%20de%20pantalla%202023-04-30%20a%20la(s)%206.42.20%20p.m..png?alt=media&token=ef15a2e4-0c38-40b4-8d51-dafabc295a2c)
 
 ## Arquitectura usada
 - mvvm: la idea es la implementación de [POP](https://medium.com/globallogic-latinoamerica-mobile/la-programaci%C3%B3n-orientada-a-protocolos-en-swift-3548ed2dc2f1) conjunto con un viewModel con los protocolos
 ```swift
-import Foundation
-import UIKit
-
-protocol ListProductsViewToViewModel {
-    func succesGetListProducts(listProducts: [ProductOfList], text: String)
-    func successGetListText(textModel: TextModel)
-    func successGetListText(locationModel: LocationModel)
-    func showError(error: String)
-}
-
-protocol ListProductsViewModelToView: AnyObject {
-    func getListProducts(controller: UIViewController, text: String, numberPerPage: Int)
-    func addTextFastSearch(text: String)
-    func getLocationData()
+protocol ListProductsViewModelDelegate: AnyObject {
+    func listProductsViewModel(succesGetCategories categories: [CategoryData])
+    func listProductsViewModel(succesGetSite siteModel: CountryData)
+    func listProductsViewModel(onError error: String)
+    func listProductsViewModel(succesGetProduct products: ProductData)
 }
 
 ```
 - y por medio de binding se entregar los resuelto en los servicios para las vistas
 
 ```swift
-///MARK: -ListProductsViewModelToView
-extension ListProductsViewModel: ListProductsViewModelToView {
-    func getListProducts(controller: UIViewController, text: String, numberPerPage: Int) {
-        
-        Products.getListProducts(numberOfItems: numberPerPage) { [weak self] success, listProducts, error in
-            if success {
-                guard let self = self, let listProducts = listProducts else {return}
-                if text.isEmpty {
-                    self.listProductsViewToViewModel?.succesGetListProducts(listProducts: listProducts, text: text)
-                    return
-                }
-                var listProductFilter = [ProductOfList]()
-                listProductFilter = listProducts.filter({ productOfList in
-                    print("\(productOfList.title ?? "") text: \(text) cumple: \((productOfList.title ?? "").contains(text.lowercased()))")
-                    return (productOfList.title?.lowercased() ?? "").contains(text.lowercased())
-                })
-                
-                self.listProductsViewToViewModel?.succesGetListProducts(listProducts: listProductFilter, text: text)
-                return
-                
-            } else {
-                controller.view.makeToast(error)
-            }
+//MARK: -ListProductsViewModel
+extension ListProductsViewController: ListProductsViewModelDelegate {
+    func listProductsViewModel(succesGetSite countryData: CountryData) {
+        self.countryData = countryData
+    }
+    
+    func listProductsViewModel(succesGetProduct products: ProductData) {
+        stopSpinner()
+        var productsNewsResult = self.products.results ?? [Result]()
+        productsNewsResult.append(contentsOf: products.results ?? [Result]())
+        self.products = products
+        self.products.results = productsNewsResult
+        if self.products.results?.isEmpty ?? false {
+            noDataView.isHidden = false
+            hideTools()
+            return
         }
-    }
-    
-    func getLocationData() {
+        noDataView.isHidden = true
+        showTools()
+        sortSelectOptionView.arrayList = listProductsViewModel?.getListTextSortInternal(productData: self.products) ?? [String]()
+        listCategoriesFilters = listProductsViewModel?.getFiltersAvaible(productData: self.products) ?? [FilterData]()
+        productCollectionView.setContentOffset(CGPoint(x: 0, y: lastContentSizeHeight), animated: false)
+        isLoadingProdcuts = false
+        productCollectionView.reloadData()
         
-        LocationsWS.getLocationProduct() {[weak self] successs, locationData, error in
-            guard let self = self else {return}
-            if let locationData = locationData {
-                self.listProductsViewToViewModel?.successGetListText(locationModel: locationData)
-            }
+    }
+    
+    func listProductsViewModel(succesGetCategories categories: [CategoryData]) {
+        filterCategoryView.stopSpinner()
+        self.categories = categories
+        var listTextCategories = [String]()
+        categories.forEach { (categoryModel) in
+            listTextCategories.append(categoryModel.name)
         }
-
-    }
-    
-    func addTextFastSearch(text: String) {
-        SearchWS.createTextSearch(text: text, email: UserDefault.getDefaultUser()?.data?.email ?? "") { [weak self] success, textModel, error in
-            guard let self = self else {return}
-            if let textModel1 = textModel, let error = textModel1.error {
-                self.listProductsViewToViewModel?.showError(error: error)
-            } else if let textModel1 = textModel {
-                self.listProductsViewToViewModel?.successGetListText(textModel: textModel1)
-            } else {
-                self.listProductsViewToViewModel?.showError(error: "Ha ocurrido un error")
-            }
-        }
-    }
-    
-    func getTextFastSearch(){
-        SearchWS.getTextSearch(email: UserDefault.getDefaultUser()?.data?.email ?? "") { [weak self] success, textModel, error in
-            guard let self = self else {return}
-            if let textModel1 = textModel, let error = textModel1.error {
-                self.listProductsViewToViewModel?.showError(error: error)
-            } else if let textModel1 = textModel {
-                self.listProductsViewToViewModel?.successGetListText(textModel: textModel1)
-            } else {
-                self.listProductsViewToViewModel?.showError(error: "Ha ocurrido un error")
-            }
-        }
-    }
-    
-    func getListFavoriteProductsIds() -> [ProductOfList] {
-        return FavoriteDefault.getFavoriteProduct()
-    }
-    
-    func addAndRemoveFavoriteId(result: ProductOfList) {
-        FavoriteDefault.addFavoriteProduct(result: result)
-    }
-    
-    func getListPage(listProducts: [ProductOfList]) -> [String] {
+        filterCategoryView.setCategoryFilter(categoryTextArray: listTextCategories)
         
-        
-        return ["0...5", "0...10", "0...15", "all"]
     }
+    
+    func listProductsViewModel(onError error: String) {
+        stopSpinner()
+        noDataView.isHidden = false
+        isLoadingProdcuts = false
+        products = productsBefore
+        productCollectionView.reloadData()
+        self.view.makeToast(error)
+    }
+    
+    
 }
 
 ```
@@ -263,118 +219,284 @@ class ApiServices {
 - y una etapa de encapsulamiento mas dedicada al negocio
 ```swift
 import Foundation
-
-struct Products {
-    static func getListProducts(numberOfItems: Int, complete: @escaping ((Bool, [ProductOfList]?, String) -> Void)) {
-        let url = getListProducstUrl().replacingOccurrences(of: "&{number}", with: "\(numberOfItems)")
+struct ProductRepository {
+    static func getProducts(countryCode: String, productData: ProductData, complete: @escaping ((Bool, ProductData?, String?) -> Void )) {
+        let url = getProductsRouter(countryId: countryCode, productData: productData)
         
-        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: [:], modelType: [ProductOfList].self) { success, listProduct, error in
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: ProductData.self) { success, productData, err in
             DispatchQueue.main.async {
-                complete(success, listProduct, error?.localizedDescription ?? "")
+                if success {
+                    complete(true, productData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
             }
         }
     }
     
-    static func getDetailProduct(idProduct: Int, complete: @escaping ((Bool, ProductOfList?, String) -> Void) ) {
-        let url = getDetailProductUrl().replacingOccurrences(of: "&{idProduct}", with: "\(idProduct)")
-        
-        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: [:], modelType: ProductOfList.self) { success, detailProduct, error in
+    static func getProducts(countryCode: String, textSearch: String, complete: @escaping ((Bool, ProductData?, String?) -> Void )){
+        let url = getItemsOfSearchTextRoute(countryId: countryCode, text: textSearch)
+
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: ProductData.self) { success, productData, err in
             DispatchQueue.main.async {
-                complete(success, detailProduct, error?.localizedDescription ?? "")
+                if success {
+                    complete(true, productData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
             }
         }
+
+    }
+    
+    static func getProductDetail(productId: String, complete: @escaping ((Bool, [ProductDetailData]?, String?) -> Void )){
+        let url = getProductDetailRoute(productId: productId)
+
+        ApiServices().requestHttpwithUrl(EpUrl: url, method: .get, withData: ["": ""], modelType: [ProductDetailData].self) { success, productDetailData, err in
+            DispatchQueue.main.async {
+                if success {
+                    complete(true, productDetailData, nil)
+                    return
+                }
+                complete(false, nil, err.debugDescription)
+            }
+        }
+
     }
 }
+
 ```
 - y por medio del viewModel nos comunicamos con las vista.
 
 ```swift
 import Foundation
-import UIKit
-class ListProductsViewModel {
-    var listProductsViewToViewModel: ListProductsViewToViewModel?
-    init(listProductsViewToViewModel: ListProductsViewToViewModel) {
-        self.listProductsViewToViewModel = listProductsViewToViewModel
+class ListProductsViewModel{
+    
+    var listProductsViewModelDelegate: ListProductsViewModelDelegate?
+
+    init(listProductsViewModelDelegate: ListProductsViewModelDelegate) {
+        self.listProductsViewModelDelegate = listProductsViewModelDelegate
     }
-}
-//MARK: -ListProductsViewModelToView
-extension ListProductsViewModel: ListProductsViewModelToView {
-    func getListProducts(controller: UIViewController, text: String, numberPerPage: Int) {
+    func setCatogoryProduct(nameCategory: String, categoryModel: CategoryData, productData: ProductData) -> ProductData {
+        guard let categoryFilterAvaible = productData.availableFilters?.first(where: { (availableFilter) -> Bool in
+            return availableFilter.id == "category"
+        }) else {
+            let filterValue = FilterValue(id: categoryModel.id, name: categoryModel.name)
+            let filterr = Filter(id: "category", name: "", type: "", values: [filterValue])
+            productData.filters = [filterr]
+            return productData
+        }
         
-        Products.getListProducts(numberOfItems: numberPerPage) { [weak self] success, listProducts, error in
+        guard let valueAvaible = categoryFilterAvaible.values?.first(where: { (availableFilterValue) -> Bool in
+            availableFilterValue.name == nameCategory
+        }) else {
+            let filterValue = FilterValue(id: categoryModel.id, name: categoryModel.name)
+            let filterr = Filter(id: "category", name: "", type: "", values: [filterValue])
+            productData.filters = [filterr]
+            return productData
+        }
+        
+        guard let categoryFilter = productData.filters?.first(where: { (filter) -> Bool in
+            return filter.id == "category"
+        }) else { return productData }
+        categoryFilter.values = [FilterValue(id: valueAvaible.id ?? "", name: valueAvaible.name ?? "")]
+        productData.filters = [categoryFilter]
+        
+        return productData
+    }
+    
+    func getListTextSortInternal(productData: ProductData) -> [String] {
+        var listTextSort = [String] ()
+        listTextSort.append(productData.sort?.name ?? "")
+        productData.availableSorts?.forEach { (sort) in
+            listTextSort.append(sort.name ?? "")
+        }
+        
+        return listTextSort
+    }
+    
+    func setInitOffsetAndLimit(numberOfItems: Int32, productData:ProductData) -> ProductData {
+        productData.paging = Paging(total: 0, primaryResults: 0, offset: 0, limit: Int(numberOfItems))
+        productData.paging?.offset = 0
+        productData.paging?.limit = Int(numberOfItems)
+        
+        return productData
+    }
+    
+    func setSortValue(nameSort: String, productData: ProductData) -> ProductData {
+        guard let sordSend = productData.availableSorts?.first(where: { (sort) -> Bool in
+            return sort.name == nameSort
+        }) else {
+            return productData
+        }
+        
+        productData.sort = sordSend
+        
+        return productData
+    }
+    
+    func getFiltersAvaible(productData: ProductData) -> [FilterData] {
+        var listFilter = [FilterData]()
+        productData.filters?.forEach({ filter in
+            let idTitle = filter.id ?? ""
+            let nameTitle = filter.name ?? ""
+            listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: "", nameValue: "", isTitle: true, state: false))
+            let listInternalFilter = filter.values?.map({ filterValue in
+                let idValue = filterValue.id ?? ""
+                let nameValue = filterValue.name ?? ""
+                return FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: true)
+            })
+            listFilter.append(contentsOf: listInternalFilter ?? [])
+            if let availableFilterInternal = productData.availableFilters?.first(where: { availableFilter in
+                return availableFilter.id == idTitle
+            }) {
+                let listAvailableFilterValue = availableFilterInternal.values?.map({ availableFilterValue in
+                    let idValue = availableFilterValue.id ?? ""
+                    let nameValue = availableFilterValue.name ?? ""
+                    return FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: false)
+                })
+                listFilter.append(contentsOf: listAvailableFilterValue ?? [])
+            }
+        })
+        
+        productData.availableFilters?.forEach { (availableFilter) in
+            let idTitle = availableFilter.id ?? ""
+            let nameTitle = availableFilter.name ?? ""
+            
+            if let _ = productData.filters?.first(where: { filter in
+                return filter.id == availableFilter.id
+            }) {
+
+            } else {
+                listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: "", nameValue: "", isTitle: true, state: false))
+                
+                availableFilter.values?.forEach { (availableFilterValue) in
+                    let idValue = availableFilterValue.id ?? ""
+                    let nameValue = availableFilterValue.name ?? ""
+                    var state = false
+                    if let _ = productData.filters?.first(where: { (filter) -> Bool in
+                        return filter.id == availableFilterValue.id
+                    }) {
+                        state = true
+                    }
+                    listFilter.append(FilterData(idTitle: idTitle, nameTitle: nameTitle, idValue: idValue, nameValue: nameValue, isTitle: false, state: state))
+                }
+            }
+        }
+        
+        return listFilter
+    }
+    
+    func setNewFilters(listFilterData: [FilterData], productData: ProductData) -> ProductData {
+        let listFilterData1 = listFilterData.filter { (filterData) -> Bool in
+            filterData.state == true
+        }
+        var filters = productData.filters ?? []
+        let filtersAvailble = productData.availableFilters ?? []
+        filtersAvailble.forEach { (filter) in
+            if let filterSelect = listFilterData1.first(where: { (filterData) -> Bool in
+                return filterData.idTitle == filter.id
+            }) {
+                let filterSend = Filter(id: filterSelect.idTitle, name: filterSelect.nameTitle, type: "", values: [FilterValue]())
+                filter.values?.forEach { (availableFilterValue) in
+                    if let filterValueSelect = listFilterData1.first(where: { (filterData) -> Bool in
+                        return filterData.idValue == availableFilterValue.id
+                    }) {
+                        let filterValue = FilterValue(id: filterValueSelect.idValue, name: filterValueSelect.nameValue)
+                        filterSend.values?.append(filterValue)
+                    }
+                }
+                if !(filterSend.values?.isEmpty ?? false) {
+                    filters.append(filterSend)
+                }
+            }
+        }
+        
+        productData.filters = filters
+        
+        return productData
+        
+    }
+    
+    func addItems(numberOfItems: Int32, productData: ProductData) -> ProductData{
+        var offset = productData.paging?.offset ?? 0
+        if ((offset + Int(numberOfItems)) >= productData.paging?.total ?? 0) {
+            offset = productData.paging?.offset ?? 0
+        } else {
+            offset += Int(numberOfItems)
+        }
+
+
+        let limit = Int(numberOfItems)
+        
+        productData.paging?.offset = offset
+        productData.paging?.limit = limit
+        
+        return productData
+    }
+    
+    func getCategoriesOfSites(countryId: String) {
+        CatagoriesRepository.getCategoriesOfSites(countryId: countryId) { [weak self] success, listCategoryData, err in
+            guard let self = self else {return}
             if success {
-                guard let self = self, let listProducts = listProducts else {return}
-                if text.isEmpty {
-                    self.listProductsViewToViewModel?.succesGetListProducts(listProducts: listProducts, text: text)
+                if let listCategoryData = listCategoryData, !listCategoryData.isEmpty {
+                    self.listProductsViewModelDelegate?.listProductsViewModel(succesGetCategories: listCategoryData)
                     return
                 }
-                var listProductFilter = [ProductOfList]()
-                listProductFilter = listProducts.filter({ productOfList in
-                    print("\(productOfList.title ?? "") text: \(text) cumple: \((productOfList.title ?? "").contains(text.lowercased()))")
-                    return (productOfList.title?.lowercased() ?? "").contains(text.lowercased())
-                })
-                
-                self.listProductsViewToViewModel?.succesGetListProducts(listProducts: listProductFilter, text: text)
-                return
-                
-            } else {
-                controller.view.makeToast(error)
             }
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
     }
     
-    func getLocationData() {
-        
-        LocationsWS.getLocationProduct() {[weak self] successs, locationData, error in
+    func getProducts(countryId: String, productData: ProductData){
+        ProductRepository.getProducts(countryCode: countryId, productData: productData) { [weak self] success, productData, err in
             guard let self = self else {return}
-            if let locationData = locationData {
-                self.listProductsViewToViewModel?.successGetListText(locationModel: locationData)
+            if success {
+                if let productData = productData {
+                    self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: productData)
+                    return
+                }
             }
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
         }
+    }
+    
+    func getProducts(countryId: String, textSearch: String){
+        ProductRepository.getProducts(countryCode: countryId, textSearch: textSearch) { [weak self] success, productData, err in
+            guard let self = self else {return}
+            if success {
+                if let productData = productData {
+                    self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: productData)
+                    return
+                }
+            }
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
+        }
+    }
 
-    }
-    
-    func addTextFastSearch(text: String) {
-        SearchWS.createTextSearch(text: text, email: UserDefault.getDefaultUser()?.data?.email ?? "") { [weak self] success, textModel, error in
-            guard let self = self else {return}
-            if let textModel1 = textModel, let error = textModel1.error {
-                self.listProductsViewToViewModel?.showError(error: error)
-            } else if let textModel1 = textModel {
-                self.listProductsViewToViewModel?.successGetListText(textModel: textModel1)
-            } else {
-                self.listProductsViewToViewModel?.showError(error: "Ha ocurrido un error")
+    func geInternalSite(){
+        let result = ContryRepository.getInternalSite()
+        if result.error != "" {
+            self.listProductsViewModelDelegate?.listProductsViewModel(onError: result.error)
+        } else {
+            if let site = result.countryData {
+                getCategoriesOfSites(countryId: site.id ?? "")
+                self.listProductsViewModelDelegate?.listProductsViewModel(succesGetSite: site)
             }
+            
         }
     }
     
-    func getTextFastSearch(){
-        SearchWS.getTextSearch(email: UserDefault.getDefaultUser()?.data?.email ?? "") { [weak self] success, textModel, error in
-            guard let self = self else {return}
-            if let textModel1 = textModel, let error = textModel1.error {
-                self.listProductsViewToViewModel?.showError(error: error)
-            } else if let textModel1 = textModel {
-                self.listProductsViewToViewModel?.successGetListText(textModel: textModel1)
-            } else {
-                self.listProductsViewToViewModel?.showError(error: "Ha ocurrido un error")
-            }
-        }
-    }
-    
-    func getListFavoriteProductsIds() -> [ProductOfList] {
-        return FavoriteDefault.getFavoriteProduct()
-    }
-    
-    func addAndRemoveFavoriteId(result: ProductOfList) {
-        FavoriteDefault.addFavoriteProduct(result: result)
-    }
-    
-    func getListPage(listProducts: [ProductOfList]) -> [String] {
-        
-        
-        return ["0...5", "0...10", "0...15", "all"]
+    func getKeepSite() -> String{
+        return getString(didGetString: "keyKeepSite")
     }
 }
-
+protocol ListProductsViewModelDelegate: AnyObject {
+    func listProductsViewModel(succesGetCategories categories: [CategoryData])
+    func listProductsViewModel(succesGetSite siteModel: CountryData)
+    func listProductsViewModel(onError error: String)
+    func listProductsViewModel(succesGetProduct products: ProductData)
+}
 
 ```
 ## Manejo de Generics

@@ -227,7 +227,7 @@ class ListProductsViewModel{
         return getString(didGetString: "keyKeepSite")
     }
 }
-protocol ListProductsViewModelDelegate {
+protocol ListProductsViewModelDelegate: AnyObject {
     func listProductsViewModel(succesGetCategories categories: [CategoryData])
     func listProductsViewModel(succesGetSite siteModel: CountryData)
     func listProductsViewModel(onError error: String)
