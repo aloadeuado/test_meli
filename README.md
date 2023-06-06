@@ -1096,6 +1096,16 @@ class DetailProductViewModelTests: XCTestCase {
 }
 ```
 
+## Ejemplo de clases con cobertura
+
+A continuación se muestra un ejemplo de las clases a las que se les ha agregado cobertura:
+
+![Ejemplo de clases con cobertura](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a)
+
+Nota: No se utilizó Test-Driven Development (TDD) en este proyecto, ya que se construyó el código primero.
+
+![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a&_gl=1*12uzflm*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNDY3NC4wLjAuMA..)
+
 ## ListProductsViewModel.swift
 
 Este archivo define la clase `ListProductsViewModel` y el protocolo `ListProductsViewModelDelegate`. 
@@ -1136,15 +1146,77 @@ El protocolo `ListProductsViewModelDelegate` define los métodos de delegado que
 
 En este código, el manejo de errores se realiza principalmente mediante la devolución de llamada `listProductsViewModel(onError error: String)`. En los métodos que realizan llamadas de red o interactúan con la base de datos, cualquier error que se encuentre se devuelve a través de este delegado. En cada uno de estos métodos, se verifica el éxito de la operación y, en caso de error, se devuelve el mensaje de error correspondiente.
 
-## Ejemplo de clases con cobertura
+### ListProductsViewModelDelegate
 
-A continuación se muestra un ejemplo de las clases a las que se les ha agregado cobertura:
+El protocolo `ListProductsViewModelDelegate` define los métodos de delegado que permiten a las clases que implementan este protocolo responder a ciertos eventos del modelo de vista.
 
-![Ejemplo de clases con cobertura](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a)
+### Manejo de casos de error
 
-Nota: No se utilizó Test-Driven Development (TDD) en este proyecto, ya que se construyó el código primero.
+En este código, el manejo de errores se realiza principalmente mediante la devolución de llamada `listProductsViewModel(onError error: String)`. En los métodos que realizan llamadas de red o interactúan con la base de datos, cualquier error que se encuentre se devuelve a través de este delegado. En cada uno de estos métodos, se verifica el éxito de la operación y, en caso de error, se devuelve el mensaje de error correspondiente.
 
-![firebasestorage](https://firebasestorage.googleapis.com/v0/b/testmeli-e8ffc.appspot.com/o/Captura%20de%20pantalla%202023-06-05%20a%20la(s)%2011.10.24%20p.m..png?alt=media&token=ff9afb6c-2fb0-485e-83d4-2c52a5ca308a&_gl=1*12uzflm*_ga*NjIzMzk4NzExLjE2ODI4NzIxNjU.*_ga_CW55HF8NVT*MTY4NjAyMjQxMS45LjEuMTY4NjAyNDY3NC4wLjAuMA..)
+#### Ejemplos de manejo de errores
+
+En el método `getProducts`, se realiza una solicitud a un repositorio para obtener datos de producto. Si esta solicitud no tiene éxito, se pasa un mensaje de error al método delegado para manejarlo:
+
+```swift
+ProductRepository.getProducts(countryCode: countryId, productData: productData) { [weak self] success, productData, err in
+    guard let self = self else {return}
+    if success {
+        if let productData = productData {
+            self.listProductsViewModelDelegate?.listProductsViewModel(succesGetProduct: productData)
+            return
+        }
+    }
+    self.listProductsViewModelDelegate?.listProductsViewModel(onError: err ?? "No data".localized)
+}
+```
+
+En el método **geInternalSite**, se realiza una llamada al repositorio para obtener el sitio interno. Si se produce un error, se devuelve un mensaje a través del método delegado:
+
+```swift
+let result = ContryRepository.getInternalSite()
+if result.error != "" {
+    self.listProductsViewModelDelegate?.listProductsViewModel(onError: result.error)
+} else {
+    if let site = result.countryData {
+        getCategoriesOfSites(countryId: site.id ?? "")
+        self.listProductsViewModelDelegate?.listProductsViewModel(succesGetSite: site)
+    }   
+}
+```
+
+## ListProductsViewController.swift
+
+Este archivo define la clase `ListProductsViewController`. Este controlador de vista se encarga de manejar y presentar la lista de productos en la aplicación.
+
+### Métodos principales
+
+[Listado de los métodos aquí...]
+
+### Manejo de casos de error
+
+El manejo de errores se realiza principalmente mediante la interfaz de usuario. Si hay algún error en las operaciones de red, se muestra un mensaje de error en la pantalla. Este manejo de errores se realiza principalmente en los métodos `listProductsViewModel(onError error: String)`.
+
+#### Ejemplos de manejo de errores
+
+En la implementación del delegado de `ListProductsViewModelDelegate`, se maneja el caso de error. Si ocurre un error al obtener los productos, se muestra un mensaje de error en la pantalla:
+
+```swift
+func listProductsViewModel(onError error: String) {
+    stopSpinner()
+    noDataView.isHidden = false
+    isLoadingProdcuts = false
+    products = productsBefore
+    productCollectionView.reloadData()
+    self.view.makeToast(error)
+}
+```
+
+En este método, si se recibe un error, se detiene el indicador de progreso, se muestra la vista "sin datos" y se restablece el estado de "cargando productos". Luego se muestra el mensaje de error en la vista usando un "toast".
+
+Por otro lado, también se manejan los errores de la red en los métodos que inician las operaciones de red, como **loadDataProducts()** y **loadSearchDataProducts(textSearch: String)**. Si ocurre un error durante estas operaciones, se maneja en el método **listProductsViewModel(onError error: String)** como se describió anteriormente.
+
+Estos son sólo algunos ejemplos de cómo este código maneja los errores. El objetivo es proporcionar feedback al usuario y asegurar que la aplicación pueda seguir funcionando a pesar de los errores.
 
 ## Depliegue continuo(CD)
 
