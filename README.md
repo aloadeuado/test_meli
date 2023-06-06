@@ -1218,6 +1218,152 @@ Por otro lado, también se manejan los errores de la red en los métodos que ini
 
 Estos son sólo algunos ejemplos de cómo este código maneja los errores. El objetivo es proporcionar feedback al usuario y asegurar que la aplicación pueda seguir funcionando a pesar de los errores.
 
+## ApiServices.swift
+
+Este archivo define la clase `ApiServices`, que se encarga de realizar solicitudes HTTP y manejar las respuestas. A continuación se muestra un ejemplo de cómo manejar los logs en este código.
+
+### Método `requestHttpwithUrl`
+
+El método `requestHttpwithUrl` se utiliza para realizar una solicitud HTTP a una URL especificada. Aquí se muestra cómo se manejan los logs en este método:
+
+```swift
+func requestHttpwithUrl<T: Codable>(EpUrl: String, method: ApiServices.Method, withData parameters: [String: Any], modelType: T.Type, completionHandler: @escaping (Bool, T?, Error?) -> Void) {
+    // ...
+
+    // Logs para URL y parámetros
+    print("[URL REQUEST=>]: \(request_url)")
+    print("[PARAMETERS=>]: \(parameters)")
+
+    // ...
+
+    let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        let response = (response as? HTTPURLResponse)
+        
+        // Log para código de estado
+        print("[CODE STATUS=>]: \(response)")
+        
+        if response?.statusCode == 200 || response?.statusCode == 201 {
+            // ...
+
+            // Log para respuesta exitosa
+            print("[RESPONSE=>]: \(textJson)")
+
+            // ...
+        } else if response?.statusCode == 400 {
+            // ...
+
+            // Log para respuesta con código de estado 400
+            print("[RESPONSE=>]: \(textJson)")
+
+            // ...
+        } else {
+            // Log para error general
+            print("[ERROR=>]: \(error?.localizedDescription ?? "")")
+
+            // Log para respuesta en caso de error
+            if let safeData = data {
+                let textJson = String(decoding: safeData, as: UTF8.self)
+                print("[RESPONSE=>]: \(textJson)")
+            }
+
+            // ...
+        }
+    })
+
+    // ...
+}
+```
+
+Aquí tienes el código completo para copiar:
+
+## ApiServices.swift
+
+Este archivo define la clase `ApiServices`, que se encarga de realizar solicitudes HTTP y manejar las respuestas. A continuación se muestra un ejemplo de cómo manejar los logs en este código.
+
+### Método `requestHttpwithUrl`
+
+El método `requestHttpwithUrl` se utiliza para realizar una solicitud HTTP a una URL especificada. Aquí se muestra cómo se manejan los logs en este método:
+
+```swift
+func requestHttpwithUrl<T: Codable>(EpUrl: String, method: ApiServices.Method, withData parameters: [String: Any], modelType: T.Type, completionHandler: @escaping (Bool, T?, Error?) -> Void) {
+    let request_url = URL(string: EpUrl)
+    let request: NSMutableURLRequest = NSMutableURLRequest()
+    print("[URL REQUEST=>]: \(request_url)")
+    print("[PARAMETERS=>]: \(parameters)")
+    request.url = request_url
+    request.httpMethod = method.rawValue
+    request.timeoutInterval = 30
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+    if method != .get {
+        let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.httpBody = postData
+    }
+    let session = URLSession.init(configuration: .default)
+    let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        let response = (response as? HTTPURLResponse)
+        print("[CODE STATUS=>]: \(response)")
+        if response?.statusCode == 200 || response?.statusCode == 201 {
+            if let safeData = data {
+                let decoder = JSONDecoder()
+                do {
+                    let textJson = String(decoding: safeData, as: UTF8.self)
+                    print("[RESPONSE=>]: \(textJson)")
+                    let decodedData = try decoder.decode(modelType, from: safeData)
+                    DispatchQueue.main.async {
+                        completionHandler(true, decodedData, nil)
+                    }
+                } catch let error{
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        completionHandler(false, nil, error)
+                    }
+                }
+            }else{
+                print("[ERROR=>]: \(error?.localizedDescription ?? "")")
+                DispatchQueue.main.async {
+                    completionHandler(false, nil, error)
+                }
+            }
+        } else if response?.statusCode == 400 {
+            if let safeData = data {
+                let decoder = JSONDecoder()
+                do {
+                    let textJson = String(decoding: safeData, as: UTF8.self)
+                    print("[RESPONSE=>]: \(textJson)")
+                    let decodedData = try decoder.decode(modelType, from: safeData)
+                    DispatchQueue.main.async {
+                        completionHandler(true, decodedData, nil)
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        completionHandler(false, nil, error)
+                    }
+                }
+            }else{
+                print("[ERROR=>]: \(error?.localizedDescription ?? "")")
+                DispatchQueue.main.async {
+                    completionHandler(false, nil, error)
+                }
+            }
+        } else {
+            print("[ERROR=>]: \(error?.localizedDescription ?? "")")
+            if let safeData = data{
+                let textJson = String(decoding: safeData, as: UTF8.self)
+                print("[RESPONSE=>]: \(textJson)")
+                let decoder = JSONDecoder()
+                DispatchQueue.main.async {
+                    completionHandler(false, nil, nil)
+                }
+            }else{
+                completionHandler(false, nil, nil)
+            }
+        }
+    })
+    task.resume()
+}
+```
+
 ## Depliegue continuo(CD)
 
 - se contemplo utilizar [fastlane](https://fastlane.tools/) pero al final nos fuimos por [bitrise](https://app.bitrise.io/) por que por medio de cajones por debamos nos construye nuestro documento [fastlane](https://fastlane.tools/)
