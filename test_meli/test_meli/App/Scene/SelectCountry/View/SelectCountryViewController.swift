@@ -32,10 +32,10 @@ class SelectedContryViewController: UIViewController {
         selectedContryViewModel = SelectedContryViewModel(selectedContryDelegate: self)
         if selectedContryViewModel?.getKeepSite() == "Save" {
             ListProductsViewController.navigationShow(controller: self, countryData: self.countryData ?? CountryData())
-            return
         }
         isLoadingSites = true
         selectedContryViewModel?.getCountriesDetail()
+        selectedContryViewModel?.getCountries()
         setStateButton()
     }
     

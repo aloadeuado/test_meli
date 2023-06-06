@@ -41,11 +41,10 @@ class SelectedContryViewModel{
                 }
                 if let listCountryFlagData = listCountryFlagData {
                     self.listCountryDetailData = listCountryFlagData
-                    self.getCountries()
                     return
                 }
             }
-            self.selectedContryDelegate?.selectedContry(onError: err ?? "")
+            self.selectedContryDelegate?.selectedContry(onError: err ?? "No data".localized)
         }
     }
 

@@ -61,31 +61,6 @@ extension SelectedContryTableViewCell {
         delegate?.selectedContryTableViewCell(didSelectSwitch: sender.isOn, indexPath: indexPath)
     }
 }
-/*//MARK: -SelectedContryDelegate
-extension SelectedContryTableViewCell: SelectedContryDelegate {
-    func selectedContry(succesCompleteDetail siteDetail: SiteDetailModel) {
-        flagImageView.sd_setImage(with: URL(string: siteDetail.flag))
-        region.text = TextConstants().LABEL_REGION + siteDetail.region
-
-        if let url = URL(string: siteDetail.flag) {
-            let request = NSURLRequest(url: url )
-            flagWebView.load(request as URLRequest)
-        }
-        
-    }
-    
-    func selectedContry(succesComplete listSites: [SiteModel]) {
-        
-    }
-    
-    func selectedContry(onNoData nodata: String) {
-        
-    }
-    
-    func selectedContry(onError error: String) {
-        
-    }
-}*/
 //MARK: -SelectedContryTableViewCellDelegate
 protocol SelectedContryTableViewCellDelegate {
     func selectedContryTableViewCell(didSelectSwitch state: Bool, indexPath: IndexPath)
