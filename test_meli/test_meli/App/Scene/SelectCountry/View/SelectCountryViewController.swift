@@ -154,7 +154,6 @@ extension SelectedContryViewController: SelectedContryDelegate {
         noDataView.isHidden = false
         self.view.makeToast(error)
     }
-    
-    
+
 }
 
